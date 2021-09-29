@@ -51,22 +51,23 @@
 
   // Crypto
   .crypto-card-section {
-      display: flex;
       width: 100%;
       margin-top: $padding_margin-l;
       border-radius: 10px;
       padding-top: $padding-margin-s;
       padding-bottom: $padding-margin-s;
+      @media screen and (min-width: $m) {
+          padding-left: $padding-margin-s;
+      }
   }
 
-  .with-hover-section:hover {
+  .crypto-card-section:hover {
       background: lighten($primary, 3%);
   }
 
   //FOOTER
   footer {
       background: black;
-      margin-top: $padding_margin_xl;
       padding-top: $padding_margin-l;
       padding-bottom: $padding_margin-l;
       color: $darkgrey;

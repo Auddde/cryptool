@@ -1,0 +1,26 @@
+{# Paramètrage #}
+
+    <div class="col-1 margin-top-l">
+
+        <a href="{{ path('app_wallet_display',{id: wallet.id}) }}">
+            <div class="crypto-card-section">
+                {# Titre + arrow #}
+                <div class="flex space-between alignitems-center">
+
+                    <div class="flex alignitems-center">
+                        <h2>{{ wallet.name }}</h2>
+                    </div>
+
+                    <button class="icon_button">
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#chevron-right"></use></svg>
+                    </button>
+
+                </div>
+
+                {# type #}
+                <div class="secondary_information">
+                    {{ wallet.wallettype.name }}
+                </div>
+            </div>
+        </a>
+    </div>

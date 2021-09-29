@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Transaction;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,19 +12,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class FrontController extends AbstractController
 {
     /**
-     * @Route("/front")
+     * Affiche la home page, une fois l'utilisateur connecté
+     * @Route("/")
+     * @IsGranted("ROLE_CUSTOMER")
      */
     public function index(): Response
     {
-        return $this->render('front/index.html.twig');
-    }
+        $user = $this->getUser();
 
-    /**
-     * @Route("/transaction")
-     */
-    public function transaction(): Response
-    {
-        return $this->render('front/transaction.html.twig');
+        $transactions = $this->getDoctrine()->getRepository(Transaction::class)->findBy(
+            [ 'user' => $user->getId() ]
+        );
+
+        // Calcul le solde initial pour toutes les transactions confondues du User
+        $solde = $this->getDoctrine()->getRepository(Transaction::class)->soldeUser($user->getId());
+
+        return $this->render('front/index.html.twig', [
+            'transactions' => $transactions,
+            'solde' => $solde
+        ]);
     }
 
 }

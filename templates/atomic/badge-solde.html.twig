@@ -1,9 +1,28 @@
+{# Paramètrage #}
+
+    {# Titre H1 #}
+    {% if transactions|length > 0 %}
+        {% if transactions|length > 1 %}
+            {% set texteh1 %}
+                {{ transactions|length }} transactions
+            {% endset %}
+            {% else %}
+                {% set texteh1 %}
+                    {{ transactions|length }} transaction
+                {% endset %}=   %}
+        {% endif %}
+    {% else %}
+        {% set texteh1 = 'Aucune transaction pour le moment !'  %}
+    {% endif %}
+
 <div class="col-start-1 col-end-13">
 
     {# Afficher sur Desktop #}
     <div class="home_btn_desktop">
         <div class="flex space-between alignitems-center">
-            <h1>4 transactions</h1>
+
+            <h1>{{ texteh1 }}</h1>
+
             <button class="basic_button margin-top-l">
                 + Ajouter une transaction
             </button>
@@ -13,7 +32,7 @@
     <div class="solde-section margin-top-l">
         <div class="flex space-between alignitems-center fullwidth">
             <div class="solde-legend">Solde initial</div>
-            <div class="solde">2500 €</div>
+            <div class="solde">{{ solde }} €</div>
         </div>
         <div class="flex space-between alignitems-center fullwidth">
             <div class="solde-legend">Gain selon le cours du jour</div>

@@ -1074,7 +1074,7 @@
   }
 }
 
-body, label, .basic_button, .form_button, .remove_button, .crypto-sigle, .solde-positif, .solde-negatif, .solde, .secondary_information, .a-arianne, a, p, h4, h3, h2, h1 {
+body, label, .basic_button, .form_button, .remove_button, .crypto-sigle, .solde-positif, .solde-negatif, .solde, .secondary_information, .text, .a-arianne, a, p, h4, h3, h2, h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
@@ -1326,21 +1326,24 @@ header {
 }
 
 .crypto-card-section {
-  display: flex;
   width: 100%;
   margin-top: 20px;
   border-radius: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+@media screen and (min-width: 768px) {
+  .crypto-card-section {
+    padding-left: 10px;
+  }
+}
 
-.with-hover-section:hover {
+.crypto-card-section:hover {
   background: #223336;
 }
 
 footer {
   background: black;
-  margin-top: 25px;
   padding-top: 20px;
   padding-bottom: 20px;
   color: #c4b3b0;

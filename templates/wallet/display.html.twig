@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portefeuille {{ wallet.name }}{% endblock %}
+
+{% block body %}
+
+    {% include('atomic/breadcrump.html.twig') %}
+
+    <div class="slow-background">
+        <div class="container">
+
+            <div class="col-start-1 col-end-13">
+
+                <h1>Mon portefeuille {{ wallet.name }}</h1></h>
+
+                Type : {{ wallet.wallettype.name }}
+
+                Informations : {{ wallet.description }}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

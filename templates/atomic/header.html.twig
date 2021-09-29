@@ -1,14 +1,30 @@
 <header>
     <div class="container">
         <div class="col-start-1 col-end-13 flex space-between alignitems-center">
-            <img src="{{ asset('images/logo.png')}}" class="logo">
+            <a href="{{ path('app_front_index') }}">
+                <img src="{{ asset('images/logo.png')}}" class="logo">
+            </a>
             <div class="flex">
-                <button class="icon_button">
-                    <svg class="icon-m"><use xlink:href="/images/icons.svg#wallet"></use></svg>
-                </button>
-                <button class="icon_button">
-                    <svg class="icon-m"><use xlink:href="/images/icons.svg#login"></use></svg>
-                </button>
+                <a href="{{ path('app_wallet_index') }}">
+                    <button class="icon_button">
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#wallet"></use></svg>
+                    </button>
+                </a>
+
+                {# Login ou profil si connecté #}
+                {% if is_granted("ROLE_CUSTOMER") %}
+                    <div class="user_name">
+                        {% if app.user.username|length > 6 %}
+                            {{ app.user.username|u.truncate(4) }}...
+                        {% else %}
+                            {{ app.user.username }}
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <button class="icon_button">
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#login"></use></svg>
+                    </button>
+                {% endif %}
             </div>
         </div>
     </div>

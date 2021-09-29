@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes portefeuilles{% endblock %}
+
+{% block body %}
+
+    {% include('atomic/breadcrump.html.twig') %}
+
+    <div class="slow-background">
+        <div class="container">
+            <div class="col-start-1 col-end-13">
+
+                <h1>Mes portefeuilles</h1>
+
+                <div class="home_btn_mobile">
+                    {% include('atomic/buttons/add.html.twig') %}
+                </div>
+
+                {# Listing de wallet #}
+                {% if wallets|length > 0 %}
+                    {% for wallet in wallets %}
+                        {% include('atomic/wallet-card.html.twig') %}
+                    {% endfor %}
+
+                    {% else %}
+                    Il n'y a aucune portefeuille pour l'instant !
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

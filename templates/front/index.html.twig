@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FrontController!{% endblock %}
+{% block title %}Cryptool{% endblock %}
 
 {% block body %}
 
@@ -16,13 +16,11 @@
                 {%  include('atomic/buttons/add-transaction.html.twig') %}
 
                 {# transaction card #}
-                {%  include('atomic/crypto-card.html.twig') %}
-                <hr class="margin-top-l">
-                {%  include('atomic/crypto-card.html.twig') %}
-                <hr class="margin-top-l">
-                {%  include('atomic/crypto-card.html.twig') %}
-                <hr class="margin-top-l">
-                {%  include('atomic/crypto-card.html.twig') %}
+                {%  for transaction in transactions %}
+                    {%  include('atomic/crypto-card.html.twig') %}
+                    <hr class="margin-top-l">
+                {% endfor %}
+
             </div>
 
         </div>
