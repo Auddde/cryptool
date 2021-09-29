@@ -1,0 +1,112 @@
+// FONT EXTENDS PARAMETRES
+
+%fontbase {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+%breadcrumb-size {
+    font-size: 0.8em;
+}
+
+// STYLES
+
+h1 {
+    font-size: 2.3em;
+    @extend %fontbase;
+}
+
+h2 {
+    font-size: 1.4em;
+    @extend %fontbase;
+}
+
+
+h3 {
+    font-size: 1.3em;
+    @extend %fontbase;
+}
+
+h4 {
+    font-size: 1.2em;
+    @extend %fontbase;
+}
+
+p {
+    font-size: 1em;
+    @extend %fontbase;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    @extend %fontbase;
+}
+
+a:hover {
+    color : $primary;
+}
+
+.a-arianne {
+    color: grey;
+    text-decoration: none;
+    @extend %fontbase;
+}
+
+.a-arianne:hover {
+    color : black;
+    text-decoration: underline;
+}
+
+.backlink {
+    font-size: 1.1em;
+}
+
+// LISTES
+
+ul.none{
+    list-style: none;
+    margin-left: 10px;
+    padding-left: 0;
+}
+
+.li-display-inline {
+    display: inline;
+    padding-left: 10px;
+}
+
+// Style propre au sites
+
+.secondary_information {
+    @extend %fontbase;
+    color: $darkgrey;
+}
+
+.solde-positif, .solde-negatif, .solde {
+    @extend %fontbase;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.solde-positif{
+    color: $validation;
+}
+
+.solde-negatif {
+    color: $errors;
+}
+
+.solde {
+    color: white;
+}
+
+.solde-legend {
+    max-width: 33%;
+    color: $darkgrey;
+}
+
+.crypto-sigle {
+    @extend  %fontbase;
+    font-weight: bold;
+    font-size: 1.4em;
+ }

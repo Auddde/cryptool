@@ -1,0 +1,117 @@
+// ICONS
+.icon-s {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-m {
+    width: 30px; 
+    height: 30px;
+}
+
+.icon-l{
+    width: 40px; 
+    height: 40px;
+}
+
+.icon-coloration {
+    fill : white;
+}
+
+.icon-coloration-valid {
+    fill: $validation;
+}
+
+.icon-coloration-error {
+    fill: $errors;
+}
+
+// Logo
+.logo {
+    max-width: 150px;
+}
+
+// BUTTONS
+.basic_button, .form_button, .remove_button {
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    border:none;
+    max-height: 50px;
+    display: flex;
+    cursor: pointer;
+    background: $complementaire;
+    color: white;
+    fill: white;
+    @extend %fontbase;
+    font-size: 1.1em;
+    @media screen and (max-width: $m) {
+        width: 100%;
+        display: block;
+        text-align: center;
+        max-height: 50px;
+        font-size: 1.1em;
+    }
+}
+
+.form_button {
+    width: 100%;
+}
+
+.basic_button:hover, .form_button {
+    background: $complementaireVif;
+}
+
+.remove_button {
+    color: white;
+    fill: white;
+    background: lighten($primary, 15%);
+}
+
+.remove_button:hover {
+    background: lighten($primary, 20%);
+}
+
+.logout_button:hover {
+    fill: $light-grey;
+    color: $light-grey;
+}
+.logout_button:hover {
+    fill: white;
+    color: white;
+}
+
+.icon_button {
+    border: none;
+    background: none;
+    fill: $secondary;
+    color: $secondary;
+    margin-right: $padding-margin-s;
+}
+
+.icon-button:hover {
+    fill: white;
+    color: white;
+}
+
+//PAGINATION
+.paginations{
+    margin-bottom: $padding_margin-xl;
+}
+
+.pagination{
+    color: white;
+    background: $primary;
+    padding:5px 10px 5px 10px;
+    margin-right: $padding_margin-xs;
+}
+
+//HR
+hr {
+    border: 1px solid lighten($primary, 10%);
+    border-radius: 5px;
+}
+
+.hr_fat {
+    border: 5px solid lighten($primary, 10%);
+    border-radius: 5px;
+}

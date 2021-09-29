@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontController!{% endblock %}
+
+{% block body %}
+
+    <div class="slow-background">
+        <div class="container">
+
+            {# Badge solde et titre#}
+            {% include('atomic/badge-solde.html.twig') %}
+
+            <div class="col-start-1 col-end-13">
+
+                {# Bouton d'ajout transaction, affiché sur Smartphone #}
+                {%  include('atomic/buttons/add-transaction.html.twig') %}
+
+                {# transaction card #}
+                {%  include('atomic/crypto-card.html.twig') %}
+                <hr class="margin-top-l">
+                {%  include('atomic/crypto-card.html.twig') %}
+                <hr class="margin-top-l">
+                {%  include('atomic/crypto-card.html.twig') %}
+                <hr class="margin-top-l">
+                {%  include('atomic/crypto-card.html.twig') %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+// FORM
+
+form {
+    max-width: 500px;
+}
+
+label {
+    @extend %fontbase;
+    font-weight: bold;
+}
+
+input[type="checkbox"] + label {
+    font-weight: normal;
+    display: unset;
+    margin-right: $padding_margin-s;
+}
+
+input[type=text], input[type=email], input[type=password], textarea, select {
+    margin-bottom: $padding_margin-xxl;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: $light-grey;
+}
+
+input[type=color] {
+    margin-left: $padding_margin-s;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: $light-grey;
+    resize: none;
+}
+
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: $light-grey;
+}
+
+.help {
+    font-size: 0.9em;
+    color: $darkgrey;
+}
+
+.errors {
+    color: $errors;
+}

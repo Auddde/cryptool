@@ -1,0 +1,35 @@
+{# Paramètre : bloc utilisé à plusieurs endroits, mais comportement différent sur le hover #}
+{%  if type is not defined %}
+{% set cardstyle = 'crypto-card-section with-hover-section' %}
+{% else %}
+{% set cardstyle = 'crypto-card-section with-hover-section' %}
+{% endif %}
+
+    <div class="col-1 margin-top-l">
+
+        <div class="fullwidth">
+            {# Titre crypto + arrow #}
+            <div class="flex space-between alignitems-center">
+
+                <div class="flex alignitems-center">
+                    <div>
+                        <svg class="icon-m icon-coloration-error margin-right-m"><use xlink:href="/images/icons.svg#arrow_increase"></use></svg>
+                    </div>
+                    <span class="crypto-sigle">BTC</span> (Bitcoin)
+                </div>
+
+                {%  if type is not defined %}
+                    <button class="icon_button">
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#chevron-right"></use></svg>
+                    </button>
+                {% endif %}
+            </div>
+
+            {# texte informatif #}
+            <div class="secondary_information">
+                360 BTC<br>
+                prix original : 1455 €<br>
+                Valeur aujourd'hui : 5000€<br>
+            </div>
+        </div>
+    </div>

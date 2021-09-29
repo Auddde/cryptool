@@ -1,0 +1,90 @@
+// GENERAL
+* { 
+    box-sizing: border-box;
+}
+
+// IMPORT
+@import "colors";
+@import "grid";
+@import "paddingmargin";
+@import "fonts";
+@import "icons";
+@import "sections";
+@import "form";
+@import "modal";
+
+body {
+    background-color: $light-grey;
+    margin: 0 auto;
+    @extend %fontbase;
+}
+
+// POUR FOOTER STICKY SI BESOIN
+.wrapper {
+    display: grid;
+    min-height: 100vh;
+}
+
+// CODES GENERIQUES : STRUCTURE
+.flex {
+    display: flex;
+}
+
+// CODES GENERIQUES : DISPOSITION
+.space-between {
+    justify-content: space-between;
+}
+
+.justifycontent-center {
+    justify-content: center;
+}
+
+.justifycontent-flexend {
+    justify-content: flex-end;
+}
+
+.alignitems-center {
+    align-items: center;
+}
+
+.alignitems-firstBaseline {
+    align-items: first baseline;
+}
+
+.flex-wrap-wrap {
+    flex-wrap: wrap;
+}
+
+// ALIGNEMENT
+.textalign-center {
+    text-align: center;
+}
+
+.textalign-right {
+    text-align: right;
+}
+
+.textalign-left {
+    text-align: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+// PADDING ET MARGIN
+// _paddingmargin.scss
+
+// WIDTH
+.fullwidth {
+    width: 100%;
+}
+
+//div center
+.divcenter {
+    margin : 0 auto;
+}

@@ -1,0 +1,166 @@
+// VARIABLES
+$nbr-columns: 12;
+
+$nbr-columns-plus1: 13;
+
+$s: 576px;
+
+$m: 768px;
+
+$l: 992px;
+
+$xl: 1200px;
+
+$col1 : 100%;
+
+$col2 : 50%;
+
+$col3 : 33.3333333333%; 
+
+$col4 : 25%;
+
+$col5 : 20%;
+
+$col6 : 16.666666666%;
+
+$col7 : 14.2857142857%;
+
+$col8 : 12.5%;
+
+$col9 : 11.1111111111%;
+
+$col10 : 10%;
+
+// CONTAINER
+.container {
+    display: grid;
+    grid-template-columns: repeat($nbr-columns, 1fr);
+    grid-auto-rows: auto;
+    gap: 10px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    
+    @media screen and (max-width: $s) {
+        max-width: auto;
+    }
+
+    @media screen and (min-width: $s) {
+        //max-width: auto;
+        max-width: auto;
+    }
+
+    @media screen and (max-width: $m) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    @media screen and (min-width: $m) {
+        max-width: 720px;
+    }
+
+    @media screen and (min-width: $l) {
+        max-width: 960px;
+    }
+
+    @media screen and (min-width: $xl) {
+        max-width: 1140px;
+    }
+}
+
+.container-fluid {
+    display: grid;
+    grid-template-columns: repeat($nbr-columns, 1fr);
+    grid-auto-rows: auto;
+    width: 100%;
+}
+
+.container-back {
+    background-color: $light-grey;
+    width: 100%;
+}
+
+// GRILLE
+
+@for $i from 1 through $nbr-columns-plus1 {
+    .col-start-#{$i} { grid-column-start: $i; }
+    .col-end-#{$i} { grid-column-end: $i; }
+}
+
+@media screen and (min-width: $s) {
+    @for $i from 1 through $nbr-columns-plus1 {
+        .col-s-start-#{$i} { grid-column-start: $i; }
+        .col-s-end-#{$i} { grid-column-end: $i; }
+    }    
+}
+
+@media screen and (min-width: $m) {
+    @for $i from 1 through $nbr-columns-plus1 {
+        .col-m-start-#{$i} { grid-column-start: $i; }
+        .col-m-end-#{$i} { grid-column-end: $i; }
+    }    
+}
+
+@media screen and (min-width: $l) {
+    @for $i from 1 through $nbr-columns-plus1 {
+        .col-l-start-#{$i} { grid-column-start: $i; }
+        .col-l-end-#{$i} { grid-column-end: $i; }
+    }    
+}
+
+@media screen and (min-width: $xl) {
+    @for $i from 1 through $nbr-columns-plus1 {
+        .col-xl-start-#{$i} { grid-column-start: $i; }
+        .col-xl-end-#{$i} { grid-column-end: $i; }
+    }    
+}
+
+// Item in a parent in %
+
+$width_ratio : ( // creation d'une map
+"1" : 100%,
+"2" : 50%,
+"3" : 33.3333333333%,
+"4" : 25%,
+"5" : 20%,
+"6" : 16.666666666%,
+"7" : 14.2857142857%,
+"8" : 12.5%,
+"9" : 11.1111111111%,
+"10" : 10%,
+);
+
+@each $name, $width in $width_ratio {
+
+    .col-#{$name} {
+        width: $width;
+    }
+
+    @media screen and (min-width: $s) {
+        .col-s-#{$name} {
+            width: $width;
+        }
+    }
+
+    @media screen and (min-width: $m) {
+        .col-m-#{$name} {
+            width: $width;
+        }
+    }
+
+    @media screen and (min-width: $l) {
+        .col-l-#{$name} {
+            width: $width;
+        }
+    }
+    @media screen and (min-width: $xl) {
+        .col-xl-#{$name} {
+            width: $width;
+        }
+    }
+}
+
+
+
+
+

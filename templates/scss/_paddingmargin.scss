@@ -1,0 +1,75 @@
+// GENERIQUES PADDING MARGIN
+$padding_margin-xs: 5px;
+$padding_margin-s: 10px;
+$padding_margin-m: 15px;
+$padding_margin-l: 20px;
+$padding_margin-xl: 25px;
+$padding_margin-xxl: 30px;
+
+$padding_margin_map: (
+        xs: $padding_margin-xs,
+        s: $padding_margin-s,
+        m: $padding_margin-m,
+        l: $padding_margin-l,
+        xl: $padding_margin-xl,
+        xxl: $padding_margin-xxl,
+);
+
+.margin0 {
+  margin: 0;
+}
+
+.padding0 {
+  padding: 0px;
+}
+
+
+@each $nom, $valeur in $padding_margin_map {
+
+  .margin-#{$nom} {
+    margin: $valeur;
+  }
+
+  .margin-right-#{$nom} {
+    margin-right: $valeur;
+  }
+
+  .margin-left-#{$nom} {
+    margin-left: $valeur;
+  }
+
+  .margin-top-#{$nom} {
+    margin-top: $valeur;
+  }
+
+  .margin-bottom-#{$nom} {
+    margin-bottom: $valeur;
+  }
+
+  .padding-#{$nom} {
+    padding: $valeur;
+  }
+
+  .padding-right-#{$nom} {
+    padding-right: $valeur;
+  }
+
+  .padding-left-#{$nom} {
+    padding-left: $valeur;
+  }
+
+  .padding-top-#{$nom} {
+    padding-top: $valeur;
+  }
+
+  .padding-bottom-#{$nom} {
+    padding-bottom: $valeur;
+  }
+}
+
+.container-padding { // Gère les paddings sur smartphone
+  @media screen and (max-width: $m) {
+    padding-left: $padding_margin-m;
+    padding-right: $padding_margin-m;
+  }
+}

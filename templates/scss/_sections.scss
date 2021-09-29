@@ -1,0 +1,75 @@
+  .slow-background {
+    background: $primary;
+  }
+
+  // HEADER
+  header{
+      background: darken($primary, 30%);
+      padding-top: $padding_margin-m;
+      padding-bottom: $padding_margin-m;
+  }
+
+  // ARIANNE
+  .arianne{
+    background: lighten($primary, 15%);
+    font-size: 0.8em;
+    color: $light-grey;
+    padding: 5px 0px 5px 0px;
+    margin-top: 0px;
+  }
+
+  .flash-validation {
+    background: lighten($primary,50%);
+    color: $validation;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  // SOLDE
+  .solde-section{
+      background: lighten($primary, 10%);
+      padding: $padding-margin-l;
+      border-radius: 30px;
+  }
+
+  // HOME (section bouton/title)
+  // Le bouton n'a pas le même affichage sur la home page selon le device
+  .home_btn_desktop {
+      @media screen and (max-width: $m) {
+          display: none;
+      }
+  }
+
+  .home_btn_mobile {
+      @media screen and (min-width: $m) {
+          display: none;
+      }
+  }
+
+  // Crypto
+  .crypto-card-section {
+      display: flex;
+      width: 100%;
+      margin-top: $padding_margin-l;
+      border-radius: 10px;
+      padding-top: $padding-margin-s;
+      padding-bottom: $padding-margin-s;
+  }
+
+  .with-hover-section:hover {
+      background: lighten($primary, 3%);
+  }
+
+  //FOOTER
+  footer {
+      background: black;
+      margin-top: $padding_margin_xl;
+      padding-top: $padding_margin-l;
+      padding-bottom: $padding_margin-l;
+      color: $darkgrey;
+      font-size: 1em;
+    }
+

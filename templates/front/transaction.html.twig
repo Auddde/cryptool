@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontController!{% endblock %}
+
+{% block body %}
+
+    {% include('atomic/breadcrump.html.twig') %}
+
+    <div class="slow-background">
+        <div class="container">
+
+            <div class="col-start-1 col-end-13">
+                {# Cartouche d'information #}
+                {% include('atomic/crypto-info.html.twig') %}
+
+                {# Gaphique #}
+                <div style="
+                background: grey;
+                max-width: 500%;
+                height: 300px;" class="margin-top-l">
+                </div>
+
+                {# Boutons actions smartphone #}
+                <div class="home_btn_mobile">
+                    {% include('atomic/buttons/modify.html.twig') %}
+                    {% include('atomic/buttons/delete.html.twig') %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
