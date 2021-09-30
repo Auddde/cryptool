@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\WalletTypeRepository;
+use App\Repository\WalletCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=WalletTypeRepository::class)
+ * @ORM\Entity(repositoryClass=WalletCategoryRepository::class)
  */
-class WalletType
+class WalletCategory
 {
     /**
      * @ORM\Id
@@ -25,7 +25,7 @@ class WalletType
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Wallet::class, mappedBy="wallettype")
+     * @ORM\OneToMany(targetEntity=Wallet::class, mappedBy="walletcategory")
      */
     private $wallets;
 

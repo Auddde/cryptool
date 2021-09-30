@@ -12,9 +12,18 @@
 
                 <h1>Mes portefeuilles</h1>
 
-                <div class="home_btn_mobile">
-                    {% include('atomic/buttons/add.html.twig') %}
-                </div>
+                {# read and display just one flash message type #}
+                {% for message in app.flashes('validation') %}
+                    <div class="flash-validation">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                <a href="{{ path('app_wallet_add') }}">
+                    <div class="">
+                        {% include('atomic/buttons/add.html.twig') %}
+                    </div>
+                </a>
 
                 {# Listing de wallet #}
                 {% if wallets|length > 0 %}

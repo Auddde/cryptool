@@ -65,6 +65,16 @@
       background: lighten($primary, 3%);
   }
 
+  //FlashValidation
+  .flash-validation {
+      background: $validation;
+      width: 100%;
+      text-align: center;
+      padding-top: $padding_margin-l;
+      padding-bottom: $padding_margin-l;
+      color: $validationVif;
+  }
+
   //FOOTER
   footer {
       background: black;

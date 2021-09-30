@@ -36,10 +36,10 @@ class Wallet
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=WalletType::class, inversedBy="wallets")
+     * @ORM\ManyToOne(targetEntity=WalletCategory::class, inversedBy="wallets")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $wallettype;
+    private $walletcategory;
 
     /**
      * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="wallet")
@@ -68,6 +68,12 @@ class Wallet
         return $this->uuid;
     }
 
+    public function setUuid(Uuid $uuid): self
+    {
+        $this->uuid = $uuid;
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -92,14 +98,14 @@ class Wallet
         return $this;
     }
 
-    public function getWallettype(): ?WalletType
+    public function getWalletcategory(): ?WalletCategory
     {
-        return $this->wallettype;
+        return $this->walletcategory;
     }
 
-    public function setWallettype(?WalletType $wallettype): self
+    public function setWalletcategory(?WalletCategory $walletcategory): self
     {
-        $this->wallettype = $wallettype;
+        $this->$walletcategory = $walletcategory;
 
         return $this;
     }

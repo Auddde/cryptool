@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un portefeuille{% endblock %}
+
+{% block body %}
+
+    {% include('atomic/breadcrump.html.twig') %}
+
+    <div class="slow-background">
+        <div class="container">
+
+            <div class="col-start-1 col-end-13">
+
+                <h1>Ajouter un portefeuille</h1>
+
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="form_button">
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+

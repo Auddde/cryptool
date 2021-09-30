@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\WalletType;
+use App\Entity\WalletCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method WalletType|null find($id, $lockMode = null, $lockVersion = null)
- * @method WalletType|null findOneBy(array $criteria, array $orderBy = null)
- * @method WalletType[]    findAll()
- * @method WalletType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method WalletCategory|null find($id, $lockMode = null, $lockVersion = null)
+ * @method WalletCategory|null findOneBy(array $criteria, array $orderBy = null)
+ * @method WalletCategory[]    findAll()
+ * @method WalletCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class WalletTypeRepository extends ServiceEntityRepository
+class WalletCategoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, WalletType::class);
+        parent::__construct($registry, WalletCategory::class);
     }
 
     // /**
-    //  * @return WalletType[] Returns an array of WalletType objects
+    //  * @return WalletCategory[] Returns an array of WalletCategory objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class WalletTypeRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?WalletType
+    public function findOneBySomeField($value): ?WalletCategory
     {
         return $this->createQueryBuilder('w')
             ->andWhere('w.exampleField = :val')

@@ -1343,6 +1343,15 @@ header {
   background: #223336;
 }
 
+.flash-validation {
+  background: #aae5b0;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #069213;
+}
+
 footer {
   background: black;
   padding-top: 20px;
@@ -1416,6 +1425,7 @@ select {
   top: 0;
   width: 100%;
   height: 100vh;
+  color: black;
 }
 
 .modal_box {

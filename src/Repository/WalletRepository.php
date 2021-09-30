@@ -36,4 +36,13 @@ class WalletRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
+
+    /**
+     * Supprimer en BDD un portefeuille selon son UUID
+     */
+    public function removeWallet(Wallet $wallet) {
+        $em = $this->getEntityManager();
+        $em->remove($wallet);
+        $em->flush();
+    }
 }
