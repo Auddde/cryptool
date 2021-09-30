@@ -4,18 +4,30 @@ namespace App\Entity;
 
 use App\Repository\TransactionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=TransactionRepository::class)
  */
 class Transaction
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique="true")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="uuid", unique="true")
+     */
+    private $uuid;
+
+    public function __construct()
+    {
+        $this->uuid = Uuid::v4();
+    }
 
     /**
      * @ORM\Column(type="integer")
@@ -44,9 +56,15 @@ class Transaction
      */
     private $user;
 
-    public function getId(): ?int
+
+    public function getId(): ?Int
     {
         return $this->id;
+    }
+
+    public function getUuid(): ?Uuid
+    {
+        return $this->uuid;
     }
 
     public function getQuantity(): ?int
@@ -108,4 +126,5 @@ class Transaction
 
         return $this;
     }
+
 }

@@ -1253,9 +1253,10 @@ ul.none {
   margin-right: 10px;
 }
 
-.icon-button:hover {
-  fill: white;
-  color: white;
+.icon_button:hover {
+  fill: ligthen(#5fc8dc, 10%);
+  color: ligthen(#5fc8dc, 10%);
+  cursor: pointer;
 }
 
 .paginations {

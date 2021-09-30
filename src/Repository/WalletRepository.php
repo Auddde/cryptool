@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Wallet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @method Wallet|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +21,19 @@ class WalletRepository extends ServiceEntityRepository
         parent::__construct($registry, Wallet::class);
     }
 
-    // /**
-    //  * @return Wallet[] Returns an array of Wallet objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
+    /**
+     * Génère le porteuille en fonction de son $id + de l'$id de l'utilisateur
+     * Empêche les utilisateurs connectés d'accéder à des portefeuilles ne leur appartenant pas.
+     */
+    public function generateWallet(Uuid $uuidWallet, User $user) {
         return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Wallet
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
+            ->select('w')
+            ->setParameter('user_id', $user->getId())
+            ->setParameter('wallet_uuid', $uuidWallet, 'uuid')
+            ->where('w.user = :user_id')
+            ->andWhere('w.uuid = :wallet_uuid')
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
-    */
 }

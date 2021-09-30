@@ -6,6 +6,7 @@ use App\Repository\WalletRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=WalletRepository::class)
@@ -15,9 +16,14 @@ class Wallet
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique="true")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="uuid", unique="true")
+     */
+    private $uuid;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -49,11 +55,17 @@ class Wallet
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
+        $this->uuid = Uuid::v4();
     }
 
-    public function getId(): ?int
+    public function getId(): ?Int
     {
         return $this->id;
+    }
+
+    public function getUuid(): ?Uuid
+    {
+        return $this->uuid;
     }
 
     public function getName(): ?string

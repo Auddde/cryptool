@@ -88,9 +88,10 @@
     margin-right: $padding-margin-s;
 }
 
-.icon-button:hover {
-    fill: white;
-    color: white;
+.icon_button:hover {
+    fill: ligthen($secondary, 10%);
+    color: ligthen($secondary, 10%);
+    cursor: pointer;
 }
 
 //PAGINATION

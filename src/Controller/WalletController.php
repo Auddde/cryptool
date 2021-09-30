@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Uid\Uuid;
 
 class WalletController extends AbstractController
 {
@@ -35,13 +36,22 @@ class WalletController extends AbstractController
      * Affiche une page portefeuille
      * @Route(
      *     "/portefeuille/{id}",
-     *     requirements={"id"="\d+"})
+     *     requirements={"id"="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"})
      * @IsGranted("ROLE_CUSTOMER")
      */
-    public function display($id): Response
+    public function display(string $id): Response
     {
+        // Récupère le user connecté
+        $user = $this->getUser();
+
         //Génère l'objet wallet
-        $wallet = $this->getDoctrine()->getRepository(Wallet::class)->find($id);
+        $uuid = Uuid::fromString($id);
+        $wallet = $this->getDoctrine()->getRepository(Wallet::class)->generateWallet($uuid, $user);
+
+        // Redirige vers 404
+        if(is_null($wallet)) {
+            throw $this->createNotFoundException(sprintf('Auncun droit d\'accès pour ce portefeuille'));
+        }
 
         return $this->render('wallet/display.html.twig', [
             'wallet' => $wallet,
