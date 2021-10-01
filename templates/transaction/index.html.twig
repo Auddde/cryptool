@@ -10,6 +10,10 @@
         <div class="container">
 
             <div class="col-start-1 col-end-13">
+
+                {# read and display just one flash message type #}
+                {% include('atomic/message_validation.html.twig') %}
+
                 {# Cartouche d'information #}
                 {% include('atomic/crypto-info.html.twig') %}
 
@@ -29,5 +33,11 @@
 
         </div>
     </div>
+
+    {# fenêtre modale pour validation de la suppression #}
+    {% include('atomic/modale.html.twig') %}
+
+    <script src="/script.js"></script>
+    <noscript><p>Merci d'activer Javasript !</p></noscript>
 
 {% endblock %}

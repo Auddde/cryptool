@@ -103,7 +103,6 @@ class WalletController extends AbstractController
         ]);
     }
 
-
     /**
      * Formulaire d'ajout d'un portefeuille
      * @Route(
@@ -120,7 +119,7 @@ class WalletController extends AbstractController
 
         //Verifie l'appartenance du portefeuille
         if(is_null($wallet)) {
-            throw $this->createNotFoundException(sprintf('Auncun droit d\'accès pour ce portefeuille'));
+            throw $this->createNotFoundException(sprintf('Auncun droit d\'accès pour ce portefeuille ou n\'existe pas'));
         }
 
         //Génère le formulaire
@@ -144,7 +143,6 @@ class WalletController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
 
     /**
      * @Route("/portefeuille/remove")

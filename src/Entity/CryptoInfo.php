@@ -27,6 +27,16 @@ class CryptoInfo
      */
     private $crypto;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $logo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,6 +67,30 @@ class CryptoInfo
         }
 
         $this->crypto = $crypto;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(string $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }

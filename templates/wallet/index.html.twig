@@ -13,11 +13,7 @@
                 <h1>Mes portefeuilles</h1>
 
                 {# read and display just one flash message type #}
-                {% for message in app.flashes('validation') %}
-                    <div class="flash-validation">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+                {% include('atomic/message_validation.html.twig') %}
 
                 <a href="{{ path('app_wallet_add') }}">
                     <div class="">

@@ -18,15 +18,15 @@ class WalletType extends AbstractType
     {
         $builder
             //->add('uuid')
+            //->add('user')
             ->add('name')
+
             ->add('description')
 
             ->add('walletcategory', EntityType::class, [
                 'class' => WalletCategory::class,
                 'choice_label' => 'name',
             ])
-
-            //->add('user')
         ;
     }
 

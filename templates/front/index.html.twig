@@ -12,8 +12,13 @@
 
             <div class="col-start-1 col-end-13">
 
+                {# read and display just one flash message type #}
+                {% include('atomic/message_validation.html.twig') %}
+
                 {# Bouton d'ajout transaction, affiché sur Smartphone #}
-                {%  include('atomic/buttons/add-transaction.html.twig') %}
+                <a href="{{ path('app_transaction_add') }}">
+                    {%  include('atomic/buttons/add-transaction.html.twig') %}
+                </a>
 
                 {# transaction card #}
                 {%  for transaction in transactions %}

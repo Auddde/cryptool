@@ -12,11 +12,7 @@
             <div class="col-start-1 col-end-13">
 
                 {# read and display just one flash message type #}
-                {% for message in app.flashes('validation') %}
-                    <div class="flash-validation">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+                {% include('atomic/message_validation.html.twig') %}
 
                 <h1>Mon portefeuille {{ wallet.name }}</h1>
 

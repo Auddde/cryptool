@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TransactionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TransactionRepository::class)
@@ -31,22 +32,24 @@ class Transaction
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive()
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @Assert\Positive()
      */
     private $originalprice;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Crypto::class, inversedBy="transaction", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Crypto::class, inversedBy="transaction")
      * @ORM\JoinColumn(nullable=false)
      */
     private $crypto;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Wallet::class, inversedBy="transactions", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Wallet::class, inversedBy="transactions")
      */
     private $wallet;
 

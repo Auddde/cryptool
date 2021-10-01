@@ -5,7 +5,7 @@
             {# Titre crypto #}
             <div class="flex space-between alignitems-center">
                 <div>
-                    <span class="crypto-sigle"> {{ transaction.crypto.symbol }}</span> ( {{ transaction.crypto.name }})
+                    <h1> {{ transaction.quantity }} {{ transaction.crypto.symbol }}</h1>
                 </div>
 
                 <div class="home_btn_desktop">
@@ -20,7 +20,7 @@
 
             {# texte informatif #}
             <div class="secondary_information">
-                {{ transaction.quantity }} {{ transaction.crypto.symbol }}<br>
+                {{ transaction.crypto.symbol }} ( {{ transaction.crypto.name }})<br>
                 prix original :  {{ transaction.originalprice }} €<br>
                 Valeur aujourd'hui : 5000€<br>
             </div>

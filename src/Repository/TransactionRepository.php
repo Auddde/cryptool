@@ -49,7 +49,15 @@ class TransactionRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult()
         ;
+    }
 
+    /**
+     * Supprimer en BDD une transaction selon son UUID
+     */
+    public function removeTransaction(Transaction $transaction) {
+        $em = $this->getEntityManager();
+        $em->remove($transaction);
+        $em->flush();
     }
 
 
