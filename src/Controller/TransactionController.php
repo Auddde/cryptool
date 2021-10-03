@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Transaction;
+use App\Services\CoinMarketCapService;
 use App\Services\TransactionService;
 
 use App\Form\TransactionType;
@@ -21,7 +22,7 @@ class TransactionController extends AbstractController
      *     requirements={"id"="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"})
      * @IsGranted("ROLE_CUSTOMER")
      */
-    public function display(string $id): Response
+    public function display(string $id, CoinMarketCapService $coinMarketCapService): Response
     {
         // Récupère le user connecté
         $user = $this->getUser();
@@ -33,12 +34,16 @@ class TransactionController extends AbstractController
          // Redirige vers 404
          if(is_null($transaction)) {
              throw $this->createNotFoundException(sprintf('Auncun droit d\'accès pour cette transaction'));
-        }
+         }
+
+         // Gènere la valeur de la transaction via l'API
+        $soldeCurrent = $coinMarketCapService->cryptoPriceConversionToday($transaction->getQuantity(), $transaction->getCrypto()->getIdmarketcoin());
 
         return $this->render('transaction/index.html.twig',[
             'transaction' => $transaction,
             'itemname' => 'transaction',
             'itemid' => $transaction->getUuid(),
+            'soldeCurrent' => $soldeCurrent,
         ]);
     }
 
@@ -111,7 +116,8 @@ class TransactionController extends AbstractController
 
         //Affichage du formulaire
         return $this->render('transaction/add-edit.html.twig', [
-            'form'=> $form->createView()
+            'form'=> $form->createView(),
+            'type'=> 'edit',
         ]);
     }
 

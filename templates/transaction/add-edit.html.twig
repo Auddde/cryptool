@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une transaction{% endblock %}
+{% block title %}
+    {% if type is defined %}
+        Modifier ma transaction
+    {% else %}
+        Ajouter une transaction
+    {% endif %}
+{% endblock %}
 
 {% block body %}
 
@@ -11,7 +17,11 @@
 
             <div class="col-start-1 col-end-13">
 
-                <h1>Ajouter une transaction</h1>
+                {% if type is defined %}
+                    <h1>Modifier ma transaction</h1>
+                {% else %}
+                    <h1>Ajouter une transaction</h1>
+                {% endif %}
 
                 {{ form_start(form) }}
                 {{ form_widget(form) }}

@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use App\Entity\Transaction;
+use App\Entity\User;
 use App\Entity\Wallet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -32,6 +33,27 @@ class TransactionService extends AbstractController
         foreach ($transactions as $transaction) {
             $this->updateNullWalletForTransaction($transaction);
         }
+    }
+
+    /**
+     * Calcule pour chaque transaction sa valeur actuelle
+     */
+    public function calculateValueOfDay(Transaction $transaction, array $exchange):float
+    {
+        return (round( ($transaction->getQuantity()) * ($exchange[$transaction->getCrypto()->getIdmarketcoin()]), 2));
+    }
+
+    /**
+     * Calcule pour un user son solde du jour en prenant en compte le change
+     */
+    public function calculateCurrentSolde($transactions) :float
+    {
+        $total = 0;
+        foreach($transactions as $transaction) {
+            $total += $transaction->getDaylyvalue();
+        }
+
+        return $total;
     }
 
 }

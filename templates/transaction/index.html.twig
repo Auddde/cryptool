@@ -17,16 +17,11 @@
                 {# Cartouche d'information #}
                 {% include('atomic/crypto-info.html.twig') %}
 
-                {# Gaphique #}
-                <div style="
-                background: grey;
-                max-width: 500%;
-                height: 300px;" class="margin-top-l">
-                </div>
-
                 {# Boutons actions smartphone #}
                 <div class="home_btn_mobile">
-                    {% include('atomic/buttons/modify.html.twig') %}
+                    <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
+                        {% include('atomic/buttons/modify.html.twig') %}
+                    </a>
                     {% include('atomic/buttons/delete.html.twig') %}
                 </div>
             </div>

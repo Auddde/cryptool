@@ -59,6 +59,11 @@ class Transaction
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="decimal", precision=30, scale=10, nullable=true)
+     */
+    private $daylyvalue;
+
 
     public function getId(): ?Int
     {
@@ -126,6 +131,18 @@ class Transaction
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDaylyvalue(): ?string
+    {
+        return $this->daylyvalue;
+    }
+
+    public function setDaylyvalue(?string $daylyvalue): self
+    {
+        $this->daylyvalue = $daylyvalue;
 
         return $this;
     }

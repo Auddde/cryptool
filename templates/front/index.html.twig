@@ -2,15 +2,52 @@
 
 {% block title %}Cryptool{% endblock %}
 
+{# Paramètrage #}
+
+    {# Titre H1 #}
+    {% if transactions|length > 0 %}
+        {% if transactions|length > 1 %}
+            {% set texteh1 %}
+                {{ transactions|length }} transactions
+            {% endset %}
+        {% else %}
+            {% set texteh1 %}
+                {{ transactions|length }} transaction
+            {% endset %}
+        {% endif %}
+    {% else %}
+        {% set texteh1 = 'Aucune transaction pour le moment !'  %}
+    {% endif %}
+
+
 {% block body %}
 
     <div class="slow-background">
         <div class="container">
 
+            <div class="col-start-1 col-end-13">
+                <h1>Bonjour Marc !</h1>
+            </div>
+
             {# Badge solde et titre#}
             {% include('atomic/badge-solde.html.twig') %}
 
             <div class="col-start-1 col-end-13">
+
+                {# Afficher sur Desktop #}
+                <div class="home_btn_desktop">
+                    <div class="flex space-between alignitems-center">
+
+                        <h2>{{ texteh1 }}</h2>
+
+                        <a href="{{ path('app_transaction_add') }}">
+                            <button class="basic_button margin-top-l">
+                                + Ajouter une transaction
+                            </button>
+                        </a>
+                    </div>
+                    <hr class="margin-top-l">
+                </div>
 
                 {# read and display just one flash message type #}
                 {% include('atomic/message_validation.html.twig') %}

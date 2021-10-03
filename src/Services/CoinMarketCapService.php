@@ -4,36 +4,23 @@
 namespace App\Services;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class CoinMarketCapService extends AbstractController
 {
-    /**
-     * Script me permettant de récupérer des information via l'API CoinMarketCap
-     * Pour l'insertion en BDD d'information statique sur les crypto
-     * Tables : crypto et crypto_info
-     * => ajouter une route pour récupérer le contenu
-     */
-    public function scriptMap() {
-        $map = $this->bddCryptoContent();
-        return new Response('<body>'.$map.'</body>') ;
+
+    // Création du client
+    private $client;
+
+    //injection de dépandance
+    public function __construct(HttpClientInterface $client) {
+        $this->client = $client;
     }
 
-    public function bddCryptoContent() {
-        /**
-         * Récupère la liste une carte de toute les cryptos, utile pour ma BDD crypto etc :
-         *
-        "id": 1,
-        "rank": 1,
-        "name": "Bitcoin",
-        "symbol": "BTC",
-        "slug": "bitcoin",
-        "is_active": 1,
-        "first_historical_data": "2013-04-28T18:47:21.000Z",
-        "last_historical_data": "2020-05-05T20:44:01.000Z",
-        "platform": null
-         */
-
+    /**
+      * Récupère la liste de toutes les cryptos, utile pour ma BDD crypto etc :
+      */
+    private function bddCryptoContent() {
         $url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map';
         $parameters = [
             'start' => '1',
@@ -64,10 +51,10 @@ class CoinMarketCapService extends AbstractController
         return $response;
     }
 
-    public function bddCryptoInfoContent() {
-        /**
-         * Récupère la liste une carte de toute les cryptos, pour les meta
-         */
+    /**
+     * Récupère les infos toutes les cryptos,  utile pour ma BDD crypto_info etc :
+     */
+    private function bddCryptoInfoContent() {
 
         $url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/info';
         $parameters = [
@@ -96,5 +83,52 @@ class CoinMarketCapService extends AbstractController
 
         return $response;
     }
+
+
+    /**
+     * Convertit une transaction en sa valeur actuelle selon le cours
+     */
+    public function cryptoPriceConversionToday($quantity, $idmarketcoin) {
+
+        //Endpoint avec paramètres
+        $url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion';
+        $parameters = [
+            'amount' => $quantity,
+            'id' => $idmarketcoin,
+            'convert' => 'EUR'
+        ];
+        $qs = http_build_query($parameters); // query string encode the parameters :  Génère une chaîne de requête en encodage UR
+        $url_parameters = "{$url}?{$qs}"; // create the request URL
+
+        //Headers
+        $headers = [
+            'Accepts: application/json',
+            'X-CMC_PRO_API_KEY: 4f8dd73c-46d3-477b-8140-455afd791fc8' //Ma propre clé disponnible sur https://pro.coinmarketcap.com/account
+        ];
+
+        //Envoie ma requete en GET
+        $response = $this->client->request(
+            'GET',
+            ''.$url_parameters.'',
+            [
+                'headers' => $headers,
+            ]
+        );
+
+        //Transforme la réponse récupérée en tableau
+        $responseInarray = $response->toArray();
+
+        //Ne récupère que le change
+        return $responseInarray['data']['quote']['EUR']['price'];
+
+    }
+
+
+
+
+
+
+
+
 
 }

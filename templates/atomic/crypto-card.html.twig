@@ -9,10 +9,14 @@
 
                     <div class="flex alignitems-center">
                         <div>
-                            <svg class="icon-m icon-coloration-error margin-right-m"><use xlink:href="/images/icons.svg#arrow_increase"></use></svg>
+                            {% if transaction.daylyvalue > transaction.originalprice %}
+                                <svg class="icon-m icon-coloration-valid margin-right-m"><use xlink:href="/images/icons.svg#arrow_increase"></use></svg>
+                            {% else %}
+                                <svg class="icon-m icon-coloration-error margin-right-m"><use xlink:href="/images/icons.svg#arrow_decrease"></use></svg>
+                            {% endif %}
+
                         </div>
-                        <span class="crypto-sigle">{{ transaction.crypto.symbol }}</span>
-                        <span class="text margin-left-xs">({{ transaction.crypto.name }})</span>
+                        <span class="crypto-sigle">{{ transaction.quantity }} {{ transaction.crypto.symbol }}</span>
                     </div>
 
                     <button class="icon_button">
@@ -22,9 +26,8 @@
 
                 {# texte informatif #}
                 <div class="secondary_information">
-                    {{ transaction.quantity }} {{ transaction.crypto.symbol }}<br>
-                    prix original : {{ transaction.originalprice }} €<br>
-                    Valeur aujourd'hui : 5000€<br>
+                    Prix original : {{ transaction.originalprice|number_format(2, ',', ' ')  }} €<br>
+                    Valeur aujourd'hui : <b>{{transaction.daylyvalue|number_format(2, ',', ' ') }} €</b><br>
                 </div>
             </div>
         </a>

@@ -11,20 +11,11 @@
                     </button>
                 </a>
 
-                {# Login ou profil si connecté #}
-                {% if is_granted("ROLE_CUSTOMER") %}
-                    <div class="user_name">
-                        {% if app.user.username|length > 6 %}
-                            {{ app.user.username|u.truncate(4) }}...
-                        {% else %}
-                            {{ app.user.username }}
-                        {% endif %}
-                    </div>
-                {% else %}
+                <a href="">
                     <button class="icon_button">
-                        <svg class="icon-m"><use xlink:href="/images/icons.svg#login"></use></svg>
+                        <svg class="icon-m margin-left-s"><use xlink:href="/images/icons.svg#profil"></use></svg>
                     </button>
-                {% endif %}
+                </a>
             </div>
         </div>
     </div>

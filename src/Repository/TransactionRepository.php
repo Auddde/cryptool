@@ -61,4 +61,21 @@ class TransactionRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Retourne toutes les crypto confonfues de toutes les transactions d'un User $id
+     */
+    public function listAllCryptoUser (User $user) {
+
+        return $this->createQueryBuilder('t')
+            ->distinct()
+            ->join('t.crypto', 'c')
+            ->select('c.idmarketcoin')
+            ->Where('t.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
 }
