@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{# Paramètre #}
+{% set back = 'app_front_index' %}
+
+
+{% block body %}
+
+{% include('atomic/breadcrump.html.twig') %}
+
+<div class="slow-background">
+    <div class="container">
+        <div class="col-start-1 col-end-13 margin-bottom-xxxl">
+
+            <div class="flex space-between alignitems-center">
+                <h1>Mon profil</h1>
+                <a href="/logout">
+                    <button class="icon_button_remove">
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#logout"></use></svg>
+                    </button>
+                </a>
+            </div>
+
+            <hr>
+
+            <div class="margin-top-l">
+                <div class="flex alignitems-center">
+                    <svg class="icon-s icon-coloration-info margin-right-s"><use xlink:href="/images/icons.svg#userplein"></use></svg>
+                    {{ user.firstname }} {{ user.lastname }}
+                </div>
+            </div>
+
+            <div class="margin-top-l">
+                <div class="flex alignitems-center">
+                    <svg class="icon-s icon-coloration-info margin-right-s"><use xlink:href="/images/icons.svg#mail"></use></svg>
+                    {{ user.email }}
+                </div>
+            </div>
+
+            <div class="margin-top-l">
+                <div class="flex alignitems-centers">
+                    <svg class="icon-s icon-coloration-info margin-right-s"><use xlink:href="/images/icons.svg#candle"></use></svg>
+                    {{ user.birthdate|date("d/m/Y")  }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

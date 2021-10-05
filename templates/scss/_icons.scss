@@ -1,4 +1,10 @@
 // ICONS
+
+.icon-xs {
+    width: 15px;
+    height: 15px;
+}
+
 .icon-s {
     width: 20px;
     height: 20px;
@@ -24,6 +30,10 @@
 
 .icon-coloration-error {
     fill: $errors;
+}
+
+.icon-coloration-info {
+    fill: lighten($primary,25%);
 }
 
 // Logo
@@ -107,6 +117,18 @@
     color: $complementaire;
 }
 
+
+.icon_button_remove {
+    border: none;
+    background: none;
+    fill: $errors;
+    cursor: pointer;
+}
+
+.icon_button_remove:hover {
+    fill: darken($errors, 15%);
+}
+
 .icon_button-add {
     border: none;
     background: none;
@@ -152,4 +174,12 @@ hr {
 .hr_light {
     border: 1px solid lighten($darkgrey, 20%);
     border-radius: 1px;
+}
+
+.hr_footer {
+    border: 1px solid lighten($primary, 2%);
+    @media screen and (min-width: $m) {
+        margin-right: 10px;
+    }
+
 }

@@ -1114,7 +1114,7 @@
   }
 }
 
-body, .action_button, .basic_button, .form_button, .remove_button, .cancel_button, .crypto-sigle, .solde-positif, .solde-negatif, .solde, .solde-positif-light, .secondary_information, .text, .a-arianne, a, p, h4, h3, h2, h1 {
+body, .titre_footer, .action_button, .basic_button, .form_button, .remove_button, .cancel_button, .crypto-sigle, .solde-positif, .solde-negatif, .solde, .solde-positif-light, .secondary_information, .text, .a-footer, a, p, h4, h3, h2, h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
@@ -1148,13 +1148,13 @@ a:hover {
   color: white;
 }
 
-.a-arianne {
-  color: grey;
+.a-footer {
+  color: #9ebcbf;
   text-decoration: none;
 }
 
-.a-arianne:hover {
-  color: black;
+.a-footer:hover {
+  color: #ccdcdd;
   text-decoration: underline;
 }
 
@@ -1235,6 +1235,11 @@ ul.none {
   hyphens: none;
 }
 
+.icon-xs {
+  width: 15px;
+  height: 15px;
+}
+
 .icon-s {
   width: 20px;
   height: 20px;
@@ -1260,6 +1265,10 @@ ul.none {
 
 .icon-coloration-error {
   fill: #e58989;
+}
+
+.icon-coloration-info {
+  fill: #4d737c;
 }
 
 .logo {
@@ -1344,6 +1353,17 @@ ul.none {
   color: #f5980c;
 }
 
+.icon_button_remove {
+  border: none;
+  background: none;
+  fill: #e58989;
+  cursor: pointer;
+}
+
+.icon_button_remove:hover {
+  fill: #d74a4a;
+}
+
 .icon_button-add {
   border: none;
   background: none;
@@ -1386,6 +1406,15 @@ hr {
 .hr_light {
   border: 1px solid #dbe6e8;
   border-radius: 1px;
+}
+
+.hr_footer {
+  border: 1px solid #203033;
+}
+@media screen and (min-width: 768px) {
+  .hr_footer {
+    margin-right: 10px;
+  }
 }
 
 .slow-background {
@@ -1491,6 +1520,20 @@ footer {
   padding-bottom: 20px;
   color: #9ebcbf;
   font-size: 1em;
+}
+
+.lien_footer {
+  padding: 5px 0px 5px 0px;
+}
+
+.titre_footer {
+  color: #cedde0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-bloc {
+    margin-bottom: 30px;
+  }
 }
 
 form {

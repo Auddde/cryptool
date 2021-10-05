@@ -4,27 +4,29 @@
             <a href="{{ path('app_front_index') }}">
                 <img src="{{ asset('images/logo.png')}}" class="logo">
             </a>
-            <div class="flex">
 
-                <a href="{{ path('app_wallet_index') }}">
-                    <button class="icon_button">
-                        <svg class="icon-m"><use xlink:href="/images/icons.svg#wallet"></use></svg>
-                    </button>
-                </a>
+            {% if user is defined %}
+                <div class="flex">
+                    <a href="{{ path('app_wallet_index') }}">
+                        <button class="icon_button">
+                            <svg class="icon-m"><use xlink:href="/images/icons.svg#wallet"></use></svg>
+                        </button>
+                    </a>
 
-                <a href="">
-                    <button class="icon_button">
-                        <svg class="icon-m"><use xlink:href="/images/icons.svg#profil"></use></svg>
-                    </button>
-                </a>
+                    <a href="{{ path('app_profil_index') }}">
+                        <button class="icon_button">
+                            <svg class="icon-m"><use xlink:href="/images/icons.svg#profil"></use></svg>
+                        </button>
+                    </a>
 
-                <a href="{{ path('app_transaction_add') }}">
-                    <button class="icon_button-add">
-                        <svg class="icon-m"><use xlink:href="/images/icons.svg#add"></use></svg>
-                    </button>
-                </a>
+                    <a href="{{ path('app_transaction_add') }}">
+                        <button class="icon_button-add">
+                            <svg class="icon-m"><use xlink:href="/images/icons.svg#add"></use></svg>
+                        </button>
+                    </a>
+                </div>
+            {% endif %}
 
-            </div>
         </div>
     </div>
 </header>

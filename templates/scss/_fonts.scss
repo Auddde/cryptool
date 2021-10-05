@@ -47,14 +47,14 @@ a:hover {
     color : white;
 }
 
-.a-arianne {
-    color: grey;
+.a-footer {
+    color: $darkgrey;
     text-decoration: none;
     @extend %fontbase;
 }
 
-.a-arianne:hover {
-    color : black;
+.a-footer:hover {
+    color : lighten($darkgrey, 15%);
     text-decoration: underline;
 }
 

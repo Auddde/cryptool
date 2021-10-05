@@ -106,3 +106,17 @@
       font-size: 1em;
     }
 
+  .lien_footer {
+      padding: 5px 0px 5px 0px;
+  }
+
+  .titre_footer {
+      @extend %fontbase;
+      color: lighten($primary, 70%);
+  }
+
+  .footer-bloc {
+      @media screen and (max-width: $m) {
+          margin-bottom: $padding-margin-xxl;
+      }
+  }
