@@ -1,6 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un portefeuille{% endblock %}
+{# paramètres #}
+    {% if type is defined and type is not null %}
+        {% set title = 'Modifier le portefeuille' %}
+        {% set bouton = 'Modifier' %}
+        {% set h1 = 'Modifier le portefeuille' %}
+        {% set back = 'app_wallet_display' %}
+        {% set backoptions = itemid %}
+    {% else %}
+        {% set title = 'Ajouter un portefeuille' %}
+        {% set bouton = 'Ajouter' %}
+        {% set h1 = 'Ajouter un portefeuille' %}
+        {% set back = 'app_wallet_index' %}
+    {% endif %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
 
 {% block body %}
 
@@ -9,19 +25,31 @@
     <div class="slow-background">
         <div class="container">
 
-            <div class="col-start-1 col-end-13">
+            <div class="col-start-1 col-end-13 margin-bottom-xxxl">
 
-                <h1>Ajouter un portefeuille</h1>
+                <div class="flex space-between">
+                    <h1>{{ h1 }}</h1>
+                    {{ include('atomic/buttons/delete.html.twig') }}
+                </div>
+
 
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <input type="submit" class="form_button">
+                <input type="submit" class="form_button" value="{{ bouton }}">
                 {{ form_end(form) }}
 
             </div>
 
         </div>
     </div>
+
+    {# fenêtre modale pour validation de la suppression #}
+    {% if type is defined and type is not null %}
+        {% include('atomic/modale.html.twig') %}
+    {% endif %}
+
+    <script src="/script.js"></script>
+    <noscript><p>Merci d'activer Javasript !</p></noscript>
 
 {% endblock %}
 

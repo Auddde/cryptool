@@ -2,34 +2,24 @@
 
         <div class="fullwidth">
 
-                <div class="flex space-between alignitems-center" style="align-items: baseline;">
-                    <div>
+                <div class="flex space-between alignitems-center">
+                    <div class="flex alignitems-firstBaseline">
                         <h1> {{ transaction.quantity }} {{ transaction.crypto.symbol }}</h1>
                         <span class="text margin-left-xs">( {{ transaction.crypto.name }} )</span>
                     </div>
 
-                    {# Boutons actions smartphone #}
-                    <div class="home_btn_desktop flex">
-                        <div class="margin-right-m">
-                            {% include('atomic/buttons/delete.html.twig') %}
+                    {# Boutons actions desktop #}
+                    <div class="home_btn_desktop">
+                        <div class="flex">
+                            <div class="margin-right-m">
+                                {% include('atomic/buttons/delete.html.twig') %}
+                            </div>
+                            <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
+                                {% include('atomic/buttons/modify.html.twig') %}
+                            </a>
                         </div>
-                        <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
-                            {% include('atomic/buttons/modify.html.twig') %}
-                        </a>
                     </div>
 
-                </div>
-
-                <hr>
-
-                {# valorisation, perte ou gain#}
-                <div class="textalign-center padding-top-xl padding-bottom-xl">
-                    <div class="valo">
-                        + 130 %
-                    </div>
-                    <div class="solde-positif-light">
-                        gain de 36 800 €
-                    </div>
                 </div>
 
                 <hr>
@@ -38,14 +28,38 @@
                 <div class="flex alignitems-center space-between padding-top-xl padding-bottom-xl" >
                     <div class="fullwidth textalign-center">
                         <span class="solde-legend">Prix original</span><br>
-                        <span class="info_solde">{{ transaction.originalprice|number_format(2, ',', ' ')  }} €</span>
-                    </div>
-                    <div class="margin-left-m margin-right-m">
-                        <svg class="icon-l icon-coloration-valid margin-right-m"><use xlink:href="/images/icons.svg#arrow_increase"></use></svg>
+                        <span class="info_solde">{{ transaction.originalprice|number_format(2, ',', '.')  }} €</span>
                     </div>
                     <div class="fullwidth textalign-center">
                         <span class="solde-legend">Valeur aujourd'hui</span><br>
-                        <span class="info_solde">{{ soldeCurrent|number_format(2, ',', ' ')  }} €</span>
+                        <span class="info_solde">{{ soldeCurrent|number_format(2, ',', '.')  }} €</span>
+                    </div>
+                </div>
+
+                <hr>
+
+                {# valorisation, perte ou gain#}
+                <div class="textalign-center padding-top-xl padding-bottom-xl">
+                    {% if '-' in valopourcentage %}
+                        <div class="valo valo-negatif">
+                            - {{ valopourcentage|number_format(1, ',', ' ') }}%
+                        </div>
+                    {% else %}
+                        <div class="valo valo-positif">
+                            + {{ valopourcentage|number_format(1, ',', ' ') }}%
+                        </div>
+                    {% endif %}
+
+                    {% if gain > 0 %}
+                    <div class="solde-positif-light test">
+                        gain de <span class="nocesure">{{gain|number_format(2, ',', '.') }}€</span>
+                    </div>
+                    {% else %}
+                    <div class="solde-negatif">
+                        perte de <span class="nocesure">{{gain|number_format(2, ',', '.')  }}€</span>
+                    </div>
+                    {% endif %}
+
                     </div>
                 </div>
 
@@ -54,7 +68,7 @@
                 {# Portefeuille #}
                 <div class="padding-top-m padding-bottom-m">
 
-                    <span class="solde-legend">Dans quel portefeuille l'ai-je rangée ?</span><br>
+                    <span class="solde-legend">Dans quel portefeuille ?</span><br>
                     {% if transaction.wallet is defined and transaction.wallet is not null %}
                         <a href="{{ path('app_wallet_display',{id: transaction.wallet.uuid}) }}">
                             <div class="flex space-between alignitems-center">
@@ -69,16 +83,15 @@
                     {% endif %}
                 </div>
 
-                {# Bouton actions #}
-                <div class="home_btn_desktop">
-                    <div class="flex">
-                        {% include('atomic/buttons/delete.html.twig') %}
-                        <div class="margin-left-xs"></div>
-                        <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
-                            {% include('atomic/buttons/modify.html.twig') %}
-                        </a>
-                    </div>
-                </div>
-
         </div>
+
+        {# Bouton actions #}
+        <div class="home_btn_mobile">
+                <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
+                    <div class="margin-bottom-l margin-top-l">
+                        {% include('atomic/buttons/action.html.twig') %}
+                    </div>
+                </a>
+        </div>
+
     </div>

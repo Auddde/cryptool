@@ -1,21 +1,32 @@
 <div class="col-start-1 col-end-13">
 
+    <a href="{{ path('app_valorisation_index') }}">
+        <div class="solde-section flex space-between">
 
-    <div class="solde-section margin-top-l">
-        <div class="flex space-between alignitems-center fullwidth">
-            <div class="solde-legend">Solde initial</div>
-            <div class="solde">{{ soldeInitial|number_format(2, ',', ' ')  }} €</div>
-        </div>
-        <div class="flex space-between alignitems-center fullwidth">
-            <div class="solde-legend">Solde selon le cours du jour</div>
+            <div class="fullwidth">
+                <div class="solde-line">
+                    <div class="solde-legend">Solde initial</div>
+                    <div class="solde">{{ soldeInitial|number_format(2, ',', ' ')  }} €</div>
+                </div>
 
-            {% if soldeCurrent > soldeInitial %}
-                <div class="solde-positif">
-            {% else %}
-                <div class="solde-negatif">
-            {% endif %}
-                {{ soldeCurrent|number_format(2, ',', ' ') }} €
+                {% if soldeCurrent != '0' %}
+                    <div class="solde-line">
+                        <div class="solde-legend">Solde selon le cours du jour</div>
+
+                        {% if soldeCurrent > soldeInitial %}
+                            <div class="solde-positif"> {{ soldeCurrent|number_format(2, ',', ' ') }} €</div>
+                        {% else %}
+                            <div class="solde-negatif"> {{ soldeCurrent|number_format(2, ',', ' ') }} €</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
+
+            <button class="icon_button">
+                <svg class="icon-m margin-left-s"><use xlink:href="/images/icons.svg#chevron-right"></use></svg>
+            </button>
+
         </div>
-    </div>
+    </a>
+
 </div>

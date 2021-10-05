@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{# Paramètre #}
+{% set titlebouton = 'Modifier le portefeuille' %}
+{% set icone = 'edit' %}
+{% set back = 'app_wallet_index' %}
+
 {% block title %}Portefeuille {{ wallet.name }}{% endblock %}
 
 {% block body %}
@@ -9,39 +14,44 @@
     <div class="slow-background">
         <div class="container">
 
-            <div class="col-start-1 col-end-13">
+            <div class="col-start-1 col-end-13 margin-bottom-xxxl">
 
                 {# read and display just one flash message type #}
                 {% include('atomic/message_validation.html.twig') %}
 
                 <h1>Mon portefeuille {{ wallet.name }}</h1>
 
-                <div>
-                    Type : {{ wallet.walletcategory.name }}
-                </div>
-
-                <div>
-                    Informations : {{ wallet.description }}
-                </div>
-
-
                 {# Boutons actions smartphone #}
                 <div class="margin-bottom-l">
                     <a href="{{ path('app_wallet_edit',  {id: wallet.uuid  }) }}">
-                        {% include('atomic/buttons/modify.html.twig') %}
+                        <div class="margin-bottom-xxl">
+                            {% include('atomic/buttons/action.html.twig') %}
+                        </div>
                     </a>
-                    {% include('atomic/buttons/delete.html.twig') %}
+                </div>
+
+                <div>
+                    <span class="secondary_information">Type</span> <br>
+                    {{ wallet.walletcategory.name }}
+                </div>
+
+                <hr class="margin-top-m">
+
+                <div class="margin-top-l">
+                    <span class="secondary_information">A propos</span><br>
+                    {{ wallet.description }}
+                </div>
+
+                <hr class="margin-top-m">
+
+                <div class="margin-top-l">
+                    <span class="secondary_information">Transactions liées</span><br>
+                    Aucune
                 </div>
 
             </div>
 
         </div>
     </div>
-
-    {# fenêtre modale pour validation de la suppression #}
-    {% include('atomic/modale.html.twig') %}
-
-    <script src="/script.js"></script>
-    <noscript><p>Merci d'activer Javasript !</p></noscript>
 
 {% endblock %}

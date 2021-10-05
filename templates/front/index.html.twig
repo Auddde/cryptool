@@ -2,7 +2,9 @@
 
 {% block title %}Cryptool{% endblock %}
 
-{# Paramètrage #}
+{# Paramètre #}
+{% set titlebouton = 'Ajouter une transaction' %}
+{% set icone = 'add' %}
 
     {# Titre H1 #}
     {% if transactions|length > 0 %}
@@ -30,37 +32,38 @@
             </div>
 
             {# Badge solde et titre#}
-            {% include('atomic/badge-solde.html.twig') %}
+                {% include('atomic/badge-solde.html.twig') %}
 
-            <div class="col-start-1 col-end-13">
+            <div class="col-start-1 col-end-13 margin-bottom-xxxl">
 
-                {# Afficher sur Desktop #}
-                <div class="home_btn_desktop">
-                    <div class="flex space-between alignitems-center">
-
-                        <h2>{{ texteh1 }}</h2>
-
-                        <a href="{{ path('app_transaction_add') }}">
-                            <button class="basic_button margin-top-l">
-                                + Ajouter une transaction
-                            </button>
-                        </a>
+                {# Ajouter une transaction : affichage différent selon device #}
+                <div class="title_bouton_section">
+                    <div class="home_btn_desktop">
+                        <div class="flex space-between alignitems-center">
+                            <h2>{{ texteh1 }}</h2>
+                        </div>
                     </div>
-                    <hr class="margin-top-l">
+
+                    {% if soldeCurrent == '0' %}
+                        <div class="home_btn_mobile margin-top-m">Aucune transaction pour le moment !</div>
+                    {% endif %}
+
+                    <a href="{{ path('app_transaction_add') }}">
+                        <div class="margin-bottom-l margin-top-l">
+                            {% include('atomic/buttons/action.html.twig') %}
+                        </div>
+                    </a>
                 </div>
 
                 {# read and display just one flash message type #}
                 {% include('atomic/message_validation.html.twig') %}
 
-                {# Bouton d'ajout transaction, affiché sur Smartphone #}
-                <a href="{{ path('app_transaction_add') }}">
-                    {%  include('atomic/buttons/add-transaction.html.twig') %}
-                </a>
 
                 {# transaction card #}
                 {%  for transaction in transactions %}
-                    {%  include('atomic/crypto-card.html.twig') %}
                     <hr class="margin-top-l">
+                    {%  include('atomic/crypto-card.html.twig') %}
+
                 {% endfor %}
 
             </div>

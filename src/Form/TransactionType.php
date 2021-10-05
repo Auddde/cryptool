@@ -36,7 +36,6 @@ class TransactionType extends AbstractType
 
             ->add('wallet', EntityType::class, [
                 'label' => 'Portefeuille',
-                'help' => 'Champ non obligatoire. Choisissez le portefeuille où se trouve vos BTC',
                 'class' => Wallet::class,
                 'choice_label' => 'name',
             ])

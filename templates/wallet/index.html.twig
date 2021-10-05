@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{# Paramètre #}
+{% set titlebouton = 'Ajouter un portefeuille' %}
+{% set icone = 'wallet' %}
+{% set back = 'app_front_index' %}
+
 {% block title %}Mes portefeuilles{% endblock %}
 
 {% block body %}
@@ -8,28 +13,43 @@
 
     <div class="slow-background">
         <div class="container">
-            <div class="col-start-1 col-end-13">
+            <div class="col-start-1 col-end-13  margin-bottom-xxl">
 
                 <h1>Mes portefeuilles</h1>
+
+                <span class="secondary_information">
+                    Un portefeuille est un logiciel (sur un ordinateur ou application web) qui va me permettre gérer et sécuriser mes crypto-monnaies<br><br>
+                </span>
 
                 {# read and display just one flash message type #}
                 {% include('atomic/message_validation.html.twig') %}
 
-                <a href="{{ path('app_wallet_add') }}">
-                    <div class="">
-                        {% include('atomic/buttons/add.html.twig') %}
-                    </div>
-                </a>
+                <div class="">
+                    {# Listing de wallet #}
+                    {% if wallets|length > 0 %}
 
-                {# Listing de wallet #}
-                {% if wallets|length > 0 %}
-                    {% for wallet in wallets %}
-                        {% include('atomic/wallet-card.html.twig') %}
-                    {% endfor %}
+                        <a href="{{ path('app_wallet_add') }}">
+                            <div class="margin-bottom-xxxl">
+                                {% include('atomic/buttons/action.html.twig') %}
+                            </div>
+                        </a>
+                        {% for wallet in wallets %}
+                            <hr>
+                            {% include('atomic/wallet-card.html.twig') %}
+                        {% endfor %}
 
-                    {% else %}
-                    Il n'y a aucune portefeuille pour l'instant !
-                {% endif %}
+                        {% else %}
+                            <hr>
+                            Il n'y a aucun portefeuille pour l'instant !<br><br>
+                            <a href="{{ path('app_wallet_add') }}">
+                                <div class="margin-bottom-xxl">
+                                    {% include('atomic/buttons/action.html.twig') %}
+                                </div>
+                            </a>
+                    {% endif %}
+
+
+                </div>
 
             </div>
         </div>

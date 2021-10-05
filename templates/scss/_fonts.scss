@@ -12,7 +12,7 @@
 // STYLES
 
 h1 {
-    font-size: 2.3em;
+    font-size: 2em;
     @extend %fontbase;
 }
 
@@ -96,7 +96,7 @@ ul.none{
     font-weight: bold;
 }
 
-.solde-positif{
+.solde-positif, .valo-positif{
     color: $validationCharte;
 }
 
@@ -105,13 +105,21 @@ ul.none{
 }
 
 
-.solde-negatif {
+.solde-negatif, .valo-negatif {
     color: $errors;
 }
 
 .solde {
     color: white;
 }
+
+
+.test[solde-positif*="."] {
+    color:red;
+}
+
+
+
 
 .info_solde {
     color: white;
@@ -120,7 +128,6 @@ ul.none{
 }
 
 .solde-legend {
-    max-width: 33%;
     color: $darkgrey;
 }
 
@@ -130,8 +137,15 @@ ul.none{
     font-size: 1.4em;
  }
 
-.valo{
-    color: #1fc36c;
+.valo {
     font-size: 2.3em;
     font-weight: bolder;
+}
+.valo{
+    font-size: 2.3em;
+    font-weight: bolder;
+}
+
+.nocesure {
+    hyphens: none;
 }

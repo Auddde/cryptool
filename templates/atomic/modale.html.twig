@@ -1,20 +1,23 @@
-<div class="modal_content" id="modale">
+<div class="modal_content flex alignitems-center" id="modale">
 
     <div class="modal_box">
         Voulez-vous supprimer cet élement ?
-        <div class="flex justifycontent-center margin-t15">
+        <hr class="hr_light">
+        <div class="secondary_information">
+            La supression de cet élèment sera définitive. <br>Souhaitez vous supprimer cet élèment ?
+        </div>
 
-            <button id="btncancel" class="basic_button">
-                &#10094; Retour
+        <div class="flex alignitems-center justifycontent-flexend margin-top-m">
+            <button id="btncancel" class="cancel_button margin-right-xs">
+                Retour
             </button>
 
             <form method="post" action="/{{ itemname }}/remove">
                 <input id="iditem" name="iditem" type="hidden" value="{{ itemid }}">
-                <button id="btnremove-action" class="remove_button margin-l15">
+                <button id="btnremove-action" class="basic_button">
                     <b>Supprimer</b>
                 </button>
             </form>
-
         </div>
     </div>
 

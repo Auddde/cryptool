@@ -22,7 +22,7 @@ class TransactionController extends AbstractController
      *     requirements={"id"="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"})
      * @IsGranted("ROLE_CUSTOMER")
      */
-    public function display(string $id, CoinMarketCapService $coinMarketCapService): Response
+    public function display(string $id, CoinMarketCapService $coinMarketCapService, TransactionService $transactionService): Response
     {
         // Récupère le user connecté
         $user = $this->getUser();
@@ -41,9 +41,9 @@ class TransactionController extends AbstractController
 
         return $this->render('transaction/index.html.twig',[
             'transaction' => $transaction,
-            'itemname' => 'transaction',
-            'itemid' => $transaction->getUuid(),
             'soldeCurrent' => $soldeCurrent,
+            'gain' => $transactionService->calculateGainTransaction($soldeCurrent, $transaction->getOriginalprice()),
+            'valopourcentage' => $transactionService->calculateValoTransaction($soldeCurrent, $transaction->getOriginalprice())
         ]);
     }
 
@@ -118,6 +118,8 @@ class TransactionController extends AbstractController
         return $this->render('transaction/add-edit.html.twig', [
             'form'=> $form->createView(),
             'type'=> 'edit',
+            'itemname' => 'transaction',
+            'itemid' => $transaction->getUuid(),
         ]);
     }
 

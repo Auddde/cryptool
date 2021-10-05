@@ -5,6 +5,7 @@ $padding_margin-m: 15px;
 $padding_margin-l: 20px;
 $padding_margin-xl: 25px;
 $padding_margin-xxl: 30px;
+$padding_margin-xxxl: 50px;
 
 $padding_margin_map: (
         xs: $padding_margin-xs,
@@ -13,6 +14,7 @@ $padding_margin_map: (
         l: $padding_margin-l,
         xl: $padding_margin-xl,
         xxl: $padding_margin-xxl,
+        xxxl: $padding_margin-xxxl,
 );
 
 .margin0 {

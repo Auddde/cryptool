@@ -62,8 +62,6 @@ class WalletController extends AbstractController
 
         return $this->render('wallet/display.html.twig', [
             'wallet' => $wallet,
-            'itemname' => 'portefeuille',
-            'itemid' => $wallet->getUuid(),
         ]);
     }
 
@@ -140,7 +138,10 @@ class WalletController extends AbstractController
 
         //Affichage du formulaire
         return $this->render('wallet/add-edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'type' => 'edit',
+            'itemname' => 'portefeuille',
+            'itemid' => $wallet->getUuid(),
         ]);
     }
 

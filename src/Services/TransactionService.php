@@ -46,7 +46,7 @@ class TransactionService extends AbstractController
     /**
      * Calcule pour un user son solde du jour en prenant en compte le change
      */
-    public function calculateCurrentSolde($transactions) :float
+    public function calculateCurrentSolde(array $transactions) :float
     {
         $total = 0;
         foreach($transactions as $transaction) {
@@ -54,6 +54,24 @@ class TransactionService extends AbstractController
         }
 
         return $total;
+    }
+
+    /**
+     * Calcul le gain obtenu pour une transaction
+     */
+    public function calculateGainTransaction(int $currentSolde, int $originalSolde) :int
+    {
+        return ($currentSolde - $originalSolde);
+    }
+
+    /**
+     * Calcul le pourcentage de valorisation entre un solde original et un solde actuel
+     */
+    public function calculateValoTransaction(int $currentSolde, int $originalSolde) :string
+    {
+        //soit y1=première valeur et y2=deuxième valeur
+        //taux = ((y2 - y1) / y1)*100
+        return ((($currentSolde - $originalSolde) / $originalSolde) * 100 ) ;
     }
 
 }

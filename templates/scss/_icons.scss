@@ -32,7 +32,7 @@
 }
 
 // BUTTONS
-.basic_button, .form_button, .remove_button {
+.basic_button, .form_button, .remove_button, .cancel_button {
     border-radius: 20px;
     padding: 10px 20px 10px 20px;
     border:none;
@@ -53,22 +53,36 @@
     }
 }
 
+.action_button {
+    @extend %fontbase;
+    background: white;
+    color: $complementaire;
+    fill: $complementaire;
+    padding: $padding_margin-s;
+    min-height: 50px;
+    border:none;
+    width: auto;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    @media screen and (max-width: $m) {
+        width: 100%;
+    }
+}
+
+.action_button:hover{
+    fill: $complementaireVif;
+    color: $complementaireVif;
+    box-shadow: 5px 5px 5px black;
+}
+
 .form_button {
     width: 100%;
 }
 
-.basic_button:hover, .form_button {
+.basic_button:hover, .form_button:hover {
     background: $complementaireVif;
-}
-
-.remove_button {
-    color: white;
-    fill: white;
-    background: lighten($primary, 15%);
-}
-
-.remove_button:hover {
-    background: lighten($primary, 20%);
 }
 
 .logout_button:hover {
@@ -85,14 +99,37 @@
     background: none;
     fill: $secondary;
     color: $secondary;
-    margin-right: $padding-margin-s;
+    cursor: pointer;
 }
 
 .icon_button:hover {
-    fill: ligthen($secondary, 10%);
-    color: ligthen($secondary, 10%);
+    fill: $complementaire;
+    color: $complementaire;
+}
+
+.icon_button-add {
+    border: none;
+    background: none;
+    fill: $complementaire;
+    color: $complementaire;
+}
+
+.icon_button-add:hover {
+    fill: $complementaireVif;
+    color: $complementaireVif;
     cursor: pointer;
 }
+
+.cancel_button{
+    background: #e8dede;
+    color: $primary;
+}
+
+.cancel_button:hover{
+    color: black;
+    background: #cbc6c6;
+}
+
 
 //PAGINATION
 .paginations{
@@ -112,7 +149,7 @@ hr {
     border-radius: 5px;
 }
 
-.hr_fat {
-    border: 5px solid lighten($primary, 10%);
-    border-radius: 5px;
+.hr_light {
+    border: 1px solid lighten($darkgrey, 20%);
+    border-radius: 1px;
 }

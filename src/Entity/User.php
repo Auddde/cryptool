@@ -62,10 +62,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $wallets;
 
+    /**
+     * @ORM\OneToMany (targetEntity=Valorisation::class, mappedBy="user")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $valorisations;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->wallets = new ArrayCollection();
+        $this->valorisations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -247,6 +254,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($wallet->getUser() === $this) {
                 $wallet->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Valorisation[]
+     */
+    public function getValorisations(): Collection
+    {
+        return $this->valorisations;
+    }
+
+    public function addValorisation(Valorisation $valorisation): self
+    {
+        if (!$this->valorisations->contains($valorisation)) {
+            $this->valorisations[] = $valorisation;
+            $valorisation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeValorisation(Valorisation $valorisation): self
+    {
+        if ($this->valorisations->removeElement($valorisation)) {
+            // set the owning side to null (unless already changed)
+            if ($valorisation->getUser() === $this) {
+                $valorisation->setUser(null);
             }
         }
 

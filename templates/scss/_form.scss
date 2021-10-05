@@ -5,8 +5,8 @@ form {
 }
 
 label {
-    @extend %fontbase;
-    font-weight: bold;
+    color: $darkgrey;
+    margin-bottom: $padding_margin-s;
 }
 
 input[type="checkbox"] + label {
@@ -17,6 +17,7 @@ input[type="checkbox"] + label {
 
 input[type=text], input[type=email], input[type=password], textarea, select {
     margin-bottom: $padding_margin-xxl;
+    margin-top:$padding_margin-s;
 }
 
 input[type=text], input[type=email], input[type=password] {

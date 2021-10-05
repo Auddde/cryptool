@@ -32,7 +32,22 @@
   .solde-section{
       background: lighten($primary, 10%);
       padding: $padding-margin-l;
-      border-radius: 30px;
+      border-radius: 5px;
+  }
+
+  .solde-section:hover{
+      background: lighten($primary, 13%);
+  }
+
+  .solde-line{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      @media screen and (max-width: $m) {
+        display: block;
+      }
+
   }
 
   // HOME (section bouton/title)
@@ -54,8 +69,7 @@
       width: 100%;
       margin-top: $padding_margin-l;
       border-radius: 10px;
-      padding-top: $padding-margin-s;
-      padding-bottom: $padding-margin-s;
+      padding: $padding_margin-s;
       @media screen and (min-width: $m) {
           padding-left: $padding-margin-s;
       }
@@ -73,6 +87,14 @@
       padding-top: $padding_margin-l;
       padding-bottom: $padding_margin-l;
       color: $validationVif;
+  }
+
+  .title_bouton_section {
+      display: flex;
+      justify-content: space-between;
+      @media screen and (max-width: $m) {
+          display: block;
+      }
   }
 
   //FOOTER

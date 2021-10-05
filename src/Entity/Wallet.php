@@ -107,7 +107,7 @@ class Wallet
 
     public function setWalletcategory(?WalletCategory $walletcategory): self
     {
-        $this->$walletcategory = $walletcategory;
+        $this->walletcategory = $walletcategory;
 
         return $this;
     }

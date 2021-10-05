@@ -14,10 +14,15 @@
     background: white;
     padding: 50px;
     margin: 0 auto;
-    margin-top: 0px;
-    min-width: 300px;
-    max-width: 600px;
+    border-radius: 10px;
     text-align: center;
     justify-content: center;
     margin-top: 100px;
+    @media screen and (max-width:$m){
+        padding: 30px 10px 30px 10px;
+    }
+    @media screen and (max-width:340px){
+        margin-right: 10px;
+        margin-left: 10px;
+    }
 }

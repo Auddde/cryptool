@@ -1067,6 +1067,46 @@
   padding-bottom: 30px;
 }
 
+.margin-xxxl {
+  margin: 50px;
+}
+
+.margin-right-xxxl {
+  margin-right: 50px;
+}
+
+.margin-left-xxxl {
+  margin-left: 50px;
+}
+
+.margin-top-xxxl {
+  margin-top: 50px;
+}
+
+.margin-bottom-xxxl {
+  margin-bottom: 50px;
+}
+
+.padding-xxxl {
+  padding: 50px;
+}
+
+.padding-right-xxxl {
+  padding-right: 50px;
+}
+
+.padding-left-xxxl {
+  padding-left: 50px;
+}
+
+.padding-top-xxxl {
+  padding-top: 50px;
+}
+
+.padding-bottom-xxxl {
+  padding-bottom: 50px;
+}
+
 @media screen and (max-width: 768px) {
   .container-padding {
     padding-left: 15px;
@@ -1074,13 +1114,13 @@
   }
 }
 
-body, label, .basic_button, .form_button, .remove_button, .crypto-sigle, .solde-positif, .solde-negatif, .solde, .solde-positif-light, .secondary_information, .text, .a-arianne, a, p, h4, h3, h2, h1 {
+body, .action_button, .basic_button, .form_button, .remove_button, .cancel_button, .crypto-sigle, .solde-positif, .solde-negatif, .solde, .solde-positif-light, .secondary_information, .text, .a-arianne, a, p, h4, h3, h2, h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
 
 h1 {
-  font-size: 2.3em;
+  font-size: 2em;
 }
 
 h2 {
@@ -1134,7 +1174,7 @@ ul.none {
 }
 
 .secondary_information {
-  color: #bfd7db;
+  color: #9ebcbf;
 }
 
 .info_solde {
@@ -1146,20 +1186,24 @@ ul.none {
   font-weight: bold;
 }
 
-.solde-positif {
-  color: #1fc36c;
+.solde-positif, .valo-positif {
+  color: #49f78d;
 }
 
 .solde-positif-light {
   color: #aae5b0;
 }
 
-.solde-negatif {
+.solde-negatif, .valo-negatif {
   color: #e58989;
 }
 
 .solde {
   color: white;
+}
+
+.test[solde-positif*="."] {
+  color: red;
 }
 
 .info_solde {
@@ -1169,8 +1213,7 @@ ul.none {
 }
 
 .solde-legend {
-  max-width: 33%;
-  color: #bfd7db;
+  color: #9ebcbf;
 }
 
 .crypto-sigle {
@@ -1179,9 +1222,17 @@ ul.none {
 }
 
 .valo {
-  color: #1fc36c;
   font-size: 2.3em;
   font-weight: bolder;
+}
+
+.valo {
+  font-size: 2.3em;
+  font-weight: bolder;
+}
+
+.nocesure {
+  hyphens: none;
 }
 
 .icon-s {
@@ -1204,7 +1255,7 @@ ul.none {
 }
 
 .icon-coloration-valid {
-  fill: #1fc36c;
+  fill: #49f78d;
 }
 
 .icon-coloration-error {
@@ -1215,20 +1266,20 @@ ul.none {
   max-width: 150px;
 }
 
-.basic_button, .form_button, .remove_button {
+.basic_button, .form_button, .remove_button, .cancel_button {
   border-radius: 20px;
   padding: 10px 20px 10px 20px;
   border: none;
   max-height: 50px;
   display: flex;
   cursor: pointer;
-  background: #f56a0c;
+  background: #f5980c;
   color: white;
   fill: white;
   font-size: 1.1em;
 }
 @media screen and (max-width: 768px) {
-  .basic_button, .form_button, .remove_button {
+  .basic_button, .form_button, .remove_button, .cancel_button {
     width: 100%;
     display: block;
     text-align: center;
@@ -1237,22 +1288,37 @@ ul.none {
   }
 }
 
+.action_button {
+  background: white;
+  color: #f5980c;
+  fill: #f5980c;
+  padding: 10px;
+  min-height: 50px;
+  border: none;
+  width: auto;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .action_button {
+    width: 100%;
+  }
+}
+
+.action_button:hover {
+  fill: #ea5e00;
+  color: #ea5e00;
+  box-shadow: 5px 5px 5px black;
+}
+
 .form_button {
   width: 100%;
 }
 
-.basic_button:hover, .form_button {
-  background: #de3706;
-}
-
-.remove_button {
-  color: white;
-  fill: white;
-  background: #39565c;
-}
-
-.remove_button:hover {
-  background: #43656c;
+.basic_button:hover, .form_button:hover {
+  background: #ea5e00;
 }
 
 .logout_button:hover {
@@ -1270,13 +1336,35 @@ ul.none {
   background: none;
   fill: #5fdcc3;
   color: #5fdcc3;
-  margin-right: 10px;
+  cursor: pointer;
 }
 
 .icon_button:hover {
-  fill: ligthen(#5fdcc3, 10%);
-  color: ligthen(#5fdcc3, 10%);
+  fill: #f5980c;
+  color: #f5980c;
+}
+
+.icon_button-add {
+  border: none;
+  background: none;
+  fill: #f5980c;
+  color: #f5980c;
+}
+
+.icon_button-add:hover {
+  fill: #ea5e00;
+  color: #ea5e00;
   cursor: pointer;
+}
+
+.cancel_button {
+  background: #e8dede;
+  color: #1c2a2d;
+}
+
+.cancel_button:hover {
+  color: black;
+  background: #cbc6c6;
 }
 
 .paginations {
@@ -1295,9 +1383,9 @@ hr {
   border-radius: 5px;
 }
 
-.hr_fat {
-  border: 5px solid #30474c;
-  border-radius: 5px;
+.hr_light {
+  border: 1px solid #dbe6e8;
+  border-radius: 1px;
 }
 
 .slow-background {
@@ -1331,7 +1419,23 @@ header {
 .solde-section {
   background: #30474c;
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 5px;
+}
+
+.solde-section:hover {
+  background: #355056;
+}
+
+.solde-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .solde-line {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1350,8 +1454,7 @@ header {
   width: 100%;
   margin-top: 20px;
   border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
 }
 @media screen and (min-width: 768px) {
   .crypto-card-section {
@@ -1372,11 +1475,21 @@ header {
   color: #069213;
 }
 
+.title_bouton_section {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .title_bouton_section {
+    display: block;
+  }
+}
+
 footer {
   background: black;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #bfd7db;
+  color: #9ebcbf;
   font-size: 1em;
 }
 
@@ -1385,7 +1498,8 @@ form {
 }
 
 label {
-  font-weight: bold;
+  color: #9ebcbf;
+  margin-bottom: 10px;
 }
 
 input[type=checkbox] + label {
@@ -1396,6 +1510,7 @@ input[type=checkbox] + label {
 
 input[type=text], input[type=email], input[type=password], textarea, select {
   margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 input[type=text], input[type=email], input[type=password] {
@@ -1431,7 +1546,7 @@ select {
 
 .help {
   font-size: 0.9em;
-  color: #bfd7db;
+  color: #9ebcbf;
 }
 
 .errors {
@@ -1452,12 +1567,21 @@ select {
   background: white;
   padding: 50px;
   margin: 0 auto;
-  margin-top: 0px;
-  min-width: 300px;
-  max-width: 600px;
+  border-radius: 10px;
   text-align: center;
   justify-content: center;
   margin-top: 100px;
+}
+@media screen and (max-width: 768px) {
+  .modal_box {
+    padding: 30px 10px 30px 10px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .modal_box {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
 
 body {

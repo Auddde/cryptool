@@ -24,20 +24,27 @@ class FrontController extends AbstractController
     {
         $user = $this->getUser();
 
-        // Génère mon tableau de change pour les crypto dont on a besoin : évide de faire 36 appels en base de données mais seulement le minimum
-        $exchange = $this->generateExchange($coinMarketCapService);
-
         //Génère les transactions de mon user
         $transactions = $this->getDoctrine()->getRepository(Transaction::class)->findBy(
             ['user' => $user->getId()]
         );
 
-        //Calcule la valeur du jour et la met à jour pour chaque transaction
-        $this->updateValueOfDay($transactions, $transactionService, $exchange);
 
-        // Calcul le solde initial pour toutes les transactions confondues du User VS solde du jour selon le change
-        $soldeInitial = $this->getDoctrine()->getRepository(Transaction::class)->soldeUser($user->getId());
-        $soldeCurrent = $transactionService->calculateCurrentSolde($transactions);
+        // Génère mon tableau de change pour les crypto dont on a besoin, si j'ai des transactions
+        if(!empty($transactions)) {
+            $exchange = $this->generateExchange($coinMarketCapService);
+
+            //Calcule la valeur du jour et la met à jour pour chaque transaction
+            $this->updateValueOfDay($transactions, $transactionService, $exchange);
+
+            // Calcul le solde initial pour toutes les transactions confondues du User VS solde du jour selon le change
+            $soldeInitial = $this->getDoctrine()->getRepository(Transaction::class)->soldeUser($user->getId());
+            $soldeCurrent = $transactionService->calculateCurrentSolde($transactions);
+
+        } else {
+            $soldeInitial = 0;
+            $soldeCurrent = 0;
+        }
 
         return $this->render('front/index.html.twig', [
             'transactions' => $transactions,
@@ -45,7 +52,6 @@ class FrontController extends AbstractController
             'soldeCurrent' => $soldeCurrent,
         ]);
     }
-
 
     /**
      * Génère un tableau de change pour les monnaies

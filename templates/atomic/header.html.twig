@@ -5,6 +5,7 @@
                 <img src="{{ asset('images/logo.png')}}" class="logo">
             </a>
             <div class="flex">
+
                 <a href="{{ path('app_wallet_index') }}">
                     <button class="icon_button">
                         <svg class="icon-m"><use xlink:href="/images/icons.svg#wallet"></use></svg>
@@ -13,9 +14,16 @@
 
                 <a href="">
                     <button class="icon_button">
-                        <svg class="icon-m margin-left-s"><use xlink:href="/images/icons.svg#profil"></use></svg>
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#profil"></use></svg>
                     </button>
                 </a>
+
+                <a href="{{ path('app_transaction_add') }}">
+                    <button class="icon_button-add">
+                        <svg class="icon-m"><use xlink:href="/images/icons.svg#add"></use></svg>
+                    </button>
+                </a>
+
             </div>
         </div>
     </div>
