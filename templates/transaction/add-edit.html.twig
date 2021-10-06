@@ -27,7 +27,9 @@
 
                 <div class="flex space-between">
                     <h1>{{ title }}</h1>
-                    {{ include('atomic/buttons/delete.html.twig') }}
+                    {% if itemname is defined %}
+                        {{ include('atomic/buttons/delete.html.twig') }}
+                    {% endif %}
                 </div>
 
                 {{ form_start(form) }}
@@ -40,7 +42,9 @@
     </div>
 
     {# fenêtre modale pour validation de la suppression #}
-    {% include('atomic/modale.html.twig') %}
+    {% if itemname is defined %}
+        {% include('atomic/modale.html.twig') %}
+    {% endif %}
 
     <script src="/script.js"></script>
     <noscript><p>Merci d'activer Javasript !</p></noscript>

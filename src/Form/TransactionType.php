@@ -17,17 +17,24 @@ class TransactionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+        $user = $options['user'];
+
         $builder
             //->add('uuid')
             //->add('user')
             ->add('crypto', EntityType::class, [
+                'placeholder' => 'Veuillez choisir une crypto',
                 'class' => Crypto::class,
                 'label' => 'Cryptomonnaie',
                 'choice_label' => 'name',
+                'query_builder' => function(\Doctrine\ORM\EntityRepository $er)  {
+                    return $er->createQueryBuilder('c')->orderBy('c.name', 'ASC');
+                },
             ])
 
             ->add('quantity', NumberType::class, [
-                'label' => 'Combien de BTC avez vous achetez ? '
+                'label' => 'Combien de BTC avez vous achetez ? ',
             ])
 
             ->add('originalprice', NumberType::class, [
@@ -35,9 +42,14 @@ class TransactionType extends AbstractType
             ])
 
             ->add('wallet', EntityType::class, [
+                'required' => false,
+                'placeholder' => 'Veuillez choisir un portefeuille',
                 'label' => 'Portefeuille',
                 'class' => Wallet::class,
                 'choice_label' => 'name',
+                'query_builder' => function(\Doctrine\ORM\EntityRepository $er) use ($user) {
+                    return $er->createQueryBuilder('w')->orderBy('w.name', 'ASC')->where('w.user = '.$user.'');
+                },
             ])
         ;
     }
@@ -47,5 +59,7 @@ class TransactionType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Transaction::class,
         ]);
+
+        $resolver->setRequired(['user']);
     }
 }

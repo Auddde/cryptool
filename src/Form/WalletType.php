@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Wallet;
 use App\Entity\WalletCategory;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,13 +20,20 @@ class WalletType extends AbstractType
         $builder
             //->add('uuid')
             //->add('user')
-            ->add('name')
+            ->add('name', TextType::class, [
+                'label'=>'Intitulé',
+            ])
 
             ->add('description')
 
             ->add('walletcategory', EntityType::class, [
                 'class' => WalletCategory::class,
+                'label' => 'Catégorie',
                 'choice_label' => 'name',
+                'placeholder' => 'Veuillez choisir une catégorie',
+                'query_builder' => function(\Doctrine\ORM\EntityRepository $er)  {
+                    return $er->createQueryBuilder('c')->orderBy('c.name', 'ASC');
+                },
             ])
         ;
     }

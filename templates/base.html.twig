@@ -6,9 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex">
+        <link rel="icon" href= "{{ asset('images/favicon.ico')}}">
 
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {# à remplir si besoin #}
         {% endblock %}
 
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -18,15 +19,13 @@
 
     <body class="margin0">
 
-        {% include('atomic/header.html.twig') %}
-
-        {% block body %}A remplir !{% endblock %}
+        <div>
+            {% include('atomic/header.html.twig') %}
+            {% block body %}A remplir !{% endblock %}
+        </div>
 
         {% include('atomic/footer.html.twig') %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app')}}  {# Très important pour utiliser la librairie JS de symfony UX #}
-        {% endblock %}
     </body>
 
 </html>

@@ -1628,8 +1628,12 @@ select {
 }
 
 body {
-  background-color: #eeeeee;
+  background-color: #1c2a2d;
   margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .wrapper {

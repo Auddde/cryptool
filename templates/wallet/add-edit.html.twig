@@ -29,7 +29,9 @@
 
                 <div class="flex space-between">
                     <h1>{{ h1 }}</h1>
-                    {{ include('atomic/buttons/delete.html.twig') }}
+                    {% if itemname is defined %}
+                        {{ include('atomic/buttons/delete.html.twig') }}
+                    {% endif %}
                 </div>
 
 

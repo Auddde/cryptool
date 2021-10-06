@@ -57,7 +57,12 @@ class TransactionController extends AbstractController
         $transaction = new Transaction();
 
         //Génère le formulaire
-        $form = $this->createForm(TransactionType::class, $transaction);
+        $form = $this->createForm(TransactionType::class, $transaction, [
+            'user' => $this->getUser()->getId()
+        ]);
+
+        //Génère le formulaire
+        //$form = $this->createForm(TransactionType::class, $transaction);
         $form->handleRequest($request);
 
         //Traitement en BDD si soumis et validé
@@ -98,7 +103,7 @@ class TransactionController extends AbstractController
         }
         
         //Génère le formulaire
-        $form = $this->createForm(TransactionType::class, $transaction);
+        $form = $this->createForm(TransactionType::class, $transaction );
         $form->handleRequest($request);
 
         //Traitement en BDD si soumis et validé

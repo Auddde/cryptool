@@ -14,9 +14,13 @@
 @import "modal";
 
 body {
-    background-color: $light-grey;
+    background-color: $primary;
     margin: 0 auto;
     @extend %fontbase;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 // POUR FOOTER STICKY SI BESOIN
