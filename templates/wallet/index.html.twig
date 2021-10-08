@@ -28,7 +28,7 @@
                     {# Listing de wallet #}
                     {% if wallets|length > 0 %}
 
-                        <a href="{{ path('app_wallet_add') }}">
+                        <a href="{{ path('app_wallet_add') }}" id="addwallet_link">
                             <div class="margin-bottom-xxxl">
                                 {% include('atomic/buttons/action.html.twig') %}
                             </div>

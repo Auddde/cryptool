@@ -102,14 +102,16 @@ class TransactionController extends AbstractController
             throw $this->createNotFoundException(sprintf('Auncun droit d\'accès pour cette transaction ou n\'existe pas'));
         }
         
-        //Génère le formulaire
-        $form = $this->createForm(TransactionType::class, $transaction );
+        //Génère le formulaire avec le user dans les options
+        $form = $this->createForm(TransactionType::class, $transaction, [
+            'user' => $this->getUser()->getId()
+        ]);
+
         $form->handleRequest($request);
 
         //Traitement en BDD si soumis et validé
         if (($form->isSubmitted()) and ($form->isValid())) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($transaction);
             $em->flush();
 
             //Génère le Flash Message

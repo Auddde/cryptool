@@ -15,8 +15,9 @@
         <div class="col-start-1 col-end-13 margin-bottom-xxxl">
 
             <div class="flex space-between alignitems-center">
-                <h1>Mon profil</h1>
-                <a href="/logout">
+                <h1>Profil de {{ user.firstname }}</h1>
+
+                <a href="/logout"  id="logout_icon" >
                     <button class="icon_button_remove">
                         <svg class="icon-m"><use xlink:href="/images/icons.svg#logout"></use></svg>
                     </button>

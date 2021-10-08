@@ -2,24 +2,16 @@
 
         <div class="fullwidth">
 
-                <div class="flex space-between alignitems-center">
+                <div class="title_bouton_section">
                     <div class="flex alignitems-firstBaseline">
                         <h1> {{ transaction.quantity }} {{ transaction.crypto.symbol }}</h1>
                         <span class="text margin-left-xs">( {{ transaction.crypto.name }} )</span>
                     </div>
 
                     {# Boutons actions desktop #}
-                    <div class="home_btn_desktop">
-                        <div class="flex">
-                            <div class="margin-right-m">
-                                {% include('atomic/buttons/delete.html.twig') %}
-                            </div>
-                            <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
-                                {% include('atomic/buttons/modify.html.twig') %}
-                            </a>
-                        </div>
-                    </div>
-
+                    <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}" id="edit_link">
+                        {% include('atomic/buttons/action.html.twig') %}
+                    </a>
                 </div>
 
                 <hr>
@@ -85,13 +77,5 @@
 
         </div>
 
-        {# Bouton actions #}
-        <div class="home_btn_mobile">
-                <a href="{{ path('app_transaction_edit', {id: transaction.uuid}) }}">
-                    <div class="margin-bottom-l margin-top-l">
-                        {% include('atomic/buttons/action.html.twig') %}
-                    </div>
-                </a>
-        </div>
 
     </div>
