@@ -19,32 +19,14 @@ class ValorisationRepository extends ServiceEntityRepository
         parent::__construct($registry, Valorisation::class);
     }
 
-    // /**
-    //  * @return Valorisation[] Returns an array of Valorisation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Supprimer de la BDD une valorisation
+     */
+    public function removeValorisation(Valorisation $valorisation)
     {
-        return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('v.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $em = $this->getEntityManager();
+        $em->remove($valorisation);
+        $em->flush();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Valorisation
-    {
-        return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

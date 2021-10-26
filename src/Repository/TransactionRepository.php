@@ -38,7 +38,7 @@ class TransactionRepository extends ServiceEntityRepository
     }
 
     /**
-     * Calcule le solde soit le total tous les prix originaux de toutes les transactions pour un user
+     * Calcule le solde, soit le total tous les prix originaux de toutes les transactions pour un user
      */
     public function soldeUser(int $idUser)
     {
@@ -60,11 +60,10 @@ class TransactionRepository extends ServiceEntityRepository
         $em->flush();
     }
 
-
     /**
      * Retourne toutes les crypto confonfues de toutes les transactions d'un User $id
      */
-    public function listAllCryptoUser (User $user) {
+    public function listAllCryptoUser(User $user) {
 
         return $this->createQueryBuilder('t')
             ->distinct()
@@ -77,5 +76,19 @@ class TransactionRepository extends ServiceEntityRepository
             ;
     }
 
+
+    /**
+     * Retourne toutes les crypto confonfues de toutes les transactions de tous les users
+     */
+    public function listAllCryptoUsers() {
+
+        return $this->createQueryBuilder('t')
+            ->distinct()
+            ->join('t.crypto', 'c')
+            ->select('c.idmarketcoin')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 }

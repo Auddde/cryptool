@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TransactionService extends AbstractController
 {
     /**
-     * Remplace par NULL le champs wallet pour une transaction $id
+     * Remplace par NULL le champs wallet pour une transaction $id (utile pour edition)
      */
     private function updateNullWalletForTransaction(Transaction $transaction) {
         $transaction->setWallet(NULL);
@@ -20,7 +20,7 @@ class TransactionService extends AbstractController
     }
 
     /**
-     * Remplace par null le champs wallet pour toutes les transactions ayant le wallet $wallet
+     * Remplace par null le champs wallet pour toutes les transactions ayant le wallet $wallet (utile si je supprime un wallet lié à plusieurs transations)
      */
     public function updateNullWalletForAllTransactions(Wallet $wallet) {
 
@@ -36,7 +36,7 @@ class TransactionService extends AbstractController
     }
 
     /**
-     * Calcule pour chaque transaction sa valeur actuelle
+     * Calcule pour chaque transaction sa valeur actuelle (en fonction du cours)
      */
     public function calculateValueOfDay(Transaction $transaction, array $exchange):float
     {
@@ -45,6 +45,7 @@ class TransactionService extends AbstractController
 
     /**
      * Calcule pour un user son solde du jour en prenant en compte le change
+     * Daylyvalue est vide en bdd et permet la mise à jour à la volée du currentSolde via la private function updateValueOfDay du FrontController
      */
     public function calculateCurrentSolde(array $transactions) :float
     {
@@ -59,7 +60,7 @@ class TransactionService extends AbstractController
     /**
      * Calcul le gain obtenu pour une transaction
      */
-    public function calculateGainTransaction(int $currentSolde, int $originalSolde) :int
+    public function calculateGainTransaction(float $currentSolde, float $originalSolde) :float
     {
         return ($currentSolde - $originalSolde);
     }
@@ -67,11 +68,22 @@ class TransactionService extends AbstractController
     /**
      * Calcul le pourcentage de valorisation entre un solde original et un solde actuel
      */
-    public function calculateValoTransaction(int $currentSolde, int $originalSolde) :string
+    public function calculateValoTransaction(float $currentSolde, float $originalSolde) :string
     {
         //soit y1=première valeur et y2=deuxième valeur
         //taux = ((y2 - y1) / y1)*100
         return ((($currentSolde - $originalSolde) / $originalSolde) * 100 ) ;
+    }
+
+    /**
+     * Calcule la valeur du jour et l'ajoute pour chaque transaction via son setter
+     */
+    public function updateValueOfDay(array $transactions, TransactionService $transactionService, $exchange): void
+    {
+        foreach ($transactions as $transaction) {
+            $newvalue = $transactionService->calculateValueOfDay($transaction, $exchange);
+            $transaction->setDaylyvalue($newvalue);
+        }
     }
 
 }

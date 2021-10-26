@@ -62,7 +62,6 @@ class FrontController extends AbstractController
         return $this->render('front/soon.html.twig');
     }
 
-
     /**
      * Génère un tableau de change pour les monnaies
      * pour 1 item de cette crypto : 1 requête API au lieu de 'nombre_de_transactions'
@@ -91,5 +90,3 @@ class FrontController extends AbstractController
     }
 
 }
-
-

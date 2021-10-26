@@ -2,8 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Transaction;
+use App\Entity\User;
 use App\Entity\Valorisation;
+use App\Services\CoinMarketCapService;
+use App\Services\CryptoService;
+use App\Services\TransactionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
@@ -24,6 +30,8 @@ class ValorisationController extends AbstractController
         $valorisations = $this->getDoctrine()->getRepository(Valorisation::class)->findBy([
             'user' => $this->getUser()
         ]);
+
+        var_dump($valorisations);
 
         $date = []; // date pour mon graphique
         $originalSolde = [];
@@ -55,10 +63,12 @@ class ValorisationController extends AbstractController
         ]);
 
 
-
-
         return $this->render('valorisation/index.html.twig', [
             'chart' => $chart,
         ]);
     }
+
+
+
+
 }

@@ -34,7 +34,7 @@ class TransactionType extends AbstractType
             ])
 
             ->add('quantity', NumberType::class, [
-                'label' => 'Combien de BTC avez vous achetez ? ',
+                'label' => 'Combien en avez-vous acheté ? ',
             ])
 
             ->add('originalprice', NumberType::class, [

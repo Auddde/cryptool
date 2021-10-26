@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="noindex">
+        <link rel="icon" href= "{{ asset('images/favicon.ico')}}" >
+
+        <title>404</title>
+
+    </head>
+
+    <body class="margin0" >
+        <div class="slow-background">
+            <div class="container">
+                <div class="col-start-1 col-end-13 flex alignitems-center justifycontent-center" style="height: 100vh;">
+
+                    <div class="textalign-center">
+                        <div><img src="{{ asset('images/logo.png')}}" class="logo"></div>
+                        <div><h2>OUPS !!!<br>Il semblerait que cette page n'existe pas...</h2></div>
+                        <div class="flex justifycontent-center">
+                            <a href="{{ path('app_front_index') }}">
+                                <button class="cancel_button">
+                                    Retournez sur Cryptool !
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
+
+
